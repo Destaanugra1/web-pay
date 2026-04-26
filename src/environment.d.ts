@@ -4,7 +4,10 @@ declare global {
       PAYLOAD_SECRET: string
       DATABASE_URL: string
       NEXT_PUBLIC_SERVER_URL: string
+      PREVIEW_SECRET: string
       VERCEL_PROJECT_PRODUCTION_URL: string
+      GOOGLE_STITCH_API_KEY?: string
+      GOOGLE_STITCH_MCP_URL?: string
     }
   }
 }

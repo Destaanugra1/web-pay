@@ -20,7 +20,9 @@ const generateTitle: GenerateTitle<Post | Page> = ({ doc }) => {
 const generateURL: GenerateURL<Post | Page> = ({ doc }) => {
   const url = getServerSideURL()
 
-  return doc?.slug ? `${url}/${doc.slug}` : url
+  if (!doc?.slug) return url
+
+  return 'content' in doc ? `${url}/berita/${doc.slug}` : `${url}/${doc.slug}`
 }
 
 export const plugins: Plugin[] = [

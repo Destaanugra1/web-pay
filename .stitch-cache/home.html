@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IKMA - Ikatan Keluarga Mahasiswa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Newsreader:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#dbe3ea",
+                        "surface-container-low": "#f6f3f2",
+                        "tertiary-container": "#394146",
+                        "secondary-fixed": "#ffe088",
+                        "on-primary-fixed-variant": "#0f4686",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#232b30",
+                        "background": "#fcf9f8",
+                        "surface-bright": "#fcf9f8",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#fed65b",
+                        "tertiary-fixed-dim": "#bfc8ce",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "on-secondary-fixed": "#241a00",
+                        "outline": "#737781",
+                        "on-secondary-container": "#745c00",
+                        "on-primary-fixed": "#001b3d",
+                        "on-tertiary-fixed-variant": "#40484d",
+                        "outline-variant": "#c3c6d2",
+                        "inverse-primary": "#a9c7ff",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "primary-fixed": "#d6e3ff",
+                        "on-background": "#1c1b1b",
+                        "secondary-fixed-dim": "#e9c349",
+                        "error": "#ba1a1a",
+                        "primary-container": "#003f7f",
+                        "surface-container": "#f0eded",
+                        "surface-tint": "#315ea0",
+                        "secondary": "#735c00",
+                        "on-tertiary-container": "#a5adb3",
+                        "inverse-surface": "#313030",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#151d22",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container-high": "#eae7e7",
+                        "on-surface-variant": "#434750",
+                        "surface": "#fcf9f8",
+                        "primary": "#002957",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-primary-container": "#83acf3",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "md": "16px",
+                        "xl": "48px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Newsreader"],
+                        "h2": ["Newsreader"],
+                        "body": ["Inter"],
+                        "h3": ["Newsreader"],
+                        "label-caps": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h2": ["36px", { "lineHeight": "1.25", "fontWeight": "600" }],
+                        "body": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .maritime-gradient {
+            background: linear-gradient(135deg, theme('colors.primary') 0%, theme('colors.primary-container') 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body text-body antialiased flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<nav class="bg-[#003F7F] dark:bg-slate-950 sticky top-0 w-full z-50 border-b border-blue-800 dark:border-slate-800 shadow-lg">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<div class="text-2xl font-bold text-white uppercase tracking-wider font-newsreader tracking-tight">IKMA</div>
+<!-- Desktop Nav -->
+<div class="hidden md:flex space-x-lg font-newsreader tracking-tight">
+<a class="text-amber-400 border-b-2 border-amber-400 pb-1 font-semibold hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">HOME</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">BERITA</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">STRUKTUR ORG</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">FOTO BPH</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">DAFTAR KADER</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">ABSEN</a>
+</div>
+<!-- Mobile Menu Icon (Placeholder for functionality) -->
+<div class="md:hidden text-white">
+<span class="material-symbols-outlined text-h3">menu</span>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow">
+<!-- Hero Section -->
+<section class="maritime-gradient text-on-primary py-32 px-gutter relative overflow-hidden flex flex-col items-center justify-center text-center">
+<!-- Decorative Background Element -->
+<div class="absolute opacity-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined" style="font-size: 400px;">directions_boat</span>
+</div>
+<div class="relative z-10 max-w-container-max mx-auto flex flex-col items-center">
+<!-- Maritime Badge -->
+<div class="w-32 h-32 rounded-full border-4 border-secondary-container bg-surface-container-lowest flex items-center justify-center shadow-[0_8px_24px_rgba(0,0,0,0.2)] mb-lg overflow-hidden">
+<img alt="Ship wheel representing maritime heritage" class="w-full h-full object-cover" data-alt="close up of a polished wooden ship steering wheel with brass accents, studio lighting, maritime theme" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtXIJKLNrZsQuicDjbaf9Yiw6MIprHTsGCKfabCiqIZeWoDQmER7VrTMeqno4GMRt4ByGR7i5cLmScDCq0hlykbgczk8gFb-ZH3D-KHWwRHXhyujCvWISxDb4AEO5Pi2lWC6NjLDSZn74t2o79ARk6Qo6lf_Mu6lDO7rX1rJMOyIFLEfiG93MpazAy6utySEqUlxYTARDO7ldlSJuiYB-9RA2HGHTkUY10z0-s_gaBQHl8z-Ms7aFbKsXvm_aoekWiJ9XpCIZ4evM"/>
+</div>
+<h1 class="font-h1 text-h1 mb-md">Institutional Excellence &amp; Maritime Heritage</h1>
+<p class="font-body text-body text-primary-fixed-dim max-w-2xl mb-xl">Membangun karakter maritim yang tangguh, profesional, dan berintegritas untuk masa depan bangsa.</p>
+<button class="bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-lg py-md rounded-DEFAULT hover:bg-secondary-fixed transition-colors shadow-md hover:shadow-lg flex items-center gap-sm">
+                    DAFTAR KADER
+                    <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- About Section -->
+<section class="bg-surface-container-low py-xl px-gutter">
+<div class="max-w-container-max mx-auto grid md:grid-cols-2 gap-xl items-center">
+<div>
+<h2 class="font-h2 text-h2 text-on-surface mb-lg relative inline-block">
+                        Tentang IKMA
+                        <div class="absolute -bottom-2 left-0 w-1/2 h-1 bg-secondary-container"></div>
+</h2>
+<p class="mb-md text-on-surface-variant font-body text-body">
+                        Ikatan Keluarga Mahasiswa (IKMA) adalah organisasi yang mewadahi seluruh mahasiswa dalam mengembangkan potensi diri, baik di bidang akademik maupun non-akademik. Kami berakar pada nilai-nilai kedisiplinan dan profesionalisme maritim.
+                    </p>
+<p class="text-on-surface-variant font-body text-body">
+                        Dengan semangat kekeluargaan, IKMA berkomitmen untuk menjadi wadah aspirasi yang inovatif dan solutif, mencetak kader-kader pemimpin masa depan yang berwawasan luas dan berkarakter kuat.
+                    </p>
+</div>
+<div class="rounded-lg overflow-hidden shadow-[0_4px_12px_rgba(28,27,27,0.05)] border border-outline-variant/30">
+<img alt="Students gathering" class="w-full h-auto object-cover aspect-[4/3]" data-alt="group of diverse university students in formal navy blue uniforms studying together in a modern bright library, professional academic setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMO8wf5r79kvCvdrUYDeTGIDJih65caXR7wsmfFEfYLsbsNhfozNiv5HhBzJf_8_qVwezNEXTV1OO8gsbS6QMRz_Xq-6hzjYGnBzcKdClXMMSojgXdtiEBPabTT5TVbTjCRYgkXD1EsA_69tAn0DHOBD3McskKpPvUCb3Jdd0xmRFYv6mOhCUSHGRy2YaUZAUyHV8IkB3q0TaOqa0SwoMEi0_lIKswKVxtk36XkT5VXS1VkBf_8ep8eYYZKqDzZg1RlXrEgJ0WjL8"/>
+</div>
+</div>
+</section>
+<!-- Statistik Cards -->
+<section class="py-xl px-gutter bg-surface">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-lg">
+<!-- Stat 1 -->
+<div class="bg-primary text-on-primary rounded-lg p-lg text-center shadow-md relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary-container opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-h2 text-secondary-container mb-sm block">group</span>
+<div class="font-h2 text-h2 text-secondary-container mb-xs">1,200+</div>
+<div class="font-label-caps text-label-caps text-primary-fixed-dim">TOTAL MEMBERS</div>
+</div>
+</div>
+<!-- Stat 2 -->
+<div class="bg-primary text-on-primary rounded-lg p-lg text-center shadow-md relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary-container opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-h2 text-secondary-container mb-sm block">history_edu</span>
+<div class="font-h2 text-h2 text-secondary-container mb-xs">1995</div>
+<div class="font-label-caps text-label-caps text-primary-fixed-dim">FOUNDING YEAR</div>
+</div>
+</div>
+<!-- Stat 3 -->
+<div class="bg-primary text-on-primary rounded-lg p-lg text-center shadow-md relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary-container opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-h2 text-secondary-container mb-sm block">event_available</span>
+<div class="font-h2 text-h2 text-secondary-container mb-xs">45+</div>
+<div class="font-label-caps text-label-caps text-primary-fixed-dim">PROGRAMS</div>
+</div>
+</div>
+<!-- Stat 4 -->
+<div class="bg-primary text-on-primary rounded-lg p-lg text-center shadow-md relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary-container opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<span class="material-symbols-outlined text-h2 text-secondary-container mb-sm block">hub</span>
+<div class="font-h2 text-h2 text-secondary-container mb-xs">12</div>
+<div class="font-label-caps text-label-caps text-primary-fixed-dim">BRANCHES</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Latest News (Bento Grid Style) -->
+<section class="py-xl px-gutter bg-surface-container-low">
+<div class="max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-lg">
+<h2 class="font-h2 text-h2 text-on-surface">Berita Terkini</h2>
+<a class="font-label-caps text-label-caps text-primary hover:text-primary-container flex items-center gap-xs" href="#">
+                        LIHAT SEMUA <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg auto-rows-[300px]">
+<!-- Featured News (Spans 2 columns on desktop) -->
+<article class="md:col-span-2 relative rounded-lg overflow-hidden shadow-[0_4px_12px_rgba(28,27,27,0.05)] border-t-[4px] border-secondary-container group">
+<img alt="News Image" class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="large academic seminar in an auditorium, professional maritime officers presenting on stage to students, wide angle shot, cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxLRZrhX0nhwRNwH5AKj4igQfd8IIgTOiY_fnJm6F1OOcDorN4wuOzTlSceRcj1zPkDWYCRYGsIwlNA63Xc2lotKINdk_obXe53XhDEv6L9kdMD4vff94DtzfRALR3ZzXOfq71PiL0ENZu7JoG8rtQ_73bez9pMJbJlS73Vb7YNljmorplBMqvT-pYuE_m0A2Q92lL8mNrMjewN4cUyFZLybK_ool1sMOm8uoRL9I7CRf_euCS5pkZO2coEBFSkZFvyZZ3LaA1U-U"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/50 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-lg w-full">
+<span class="inline-block bg-secondary-container text-on-secondary-container font-label-caps text-[10px] px-sm py-xs rounded-sm mb-sm">KEGIATAN</span>
+<h3 class="font-h3 text-h3 text-on-primary mb-xs">Seminar Nasional Maritim 2024 Sukses Diselenggarakan</h3>
+<p class="font-body text-body text-primary-fixed line-clamp-2">Ribuan mahasiswa dari berbagai daerah menghadiri seminar nasional yang membahas masa depan poros maritim dunia.</p>
+</div>
+</article>
+<!-- Secondary News 1 -->
+<article class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-[0_4px_12px_rgba(28,27,27,0.05)] border-t-[4px] border-primary flex flex-col group hover:shadow-lg transition-shadow">
+<div class="h-40 overflow-hidden relative">
+<img alt="News Image" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="students in professional attire shaking hands in a bright modern office setting, teamwork, agreement" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7d1Pbz3ukSk3B01G-CnEGpab7_aFtWfCUporMVTaVhPiCa8Ske5HR6vkq6C0tGsQTUOU1GyOAFPrhP2bVTCwd1KpBARrQmbQASyCc9Hqypo1sfM3gbMJ2OrBy6fRYZI1_4racwnEUxiqmhuJnyk2wqJctUluMaBBHVA5e4FfJtyc8Aivs8AhUhvI74yOdGZ4OpjDNN-byL7rsJ1omg0M1HhC_UcD8TMBkdWjCC9bOkIjqYz785pjETLgk2VWxo3yJ6AKhs2Q6smk"/>
+</div>
+<div class="p-md flex-grow flex flex-col">
+<span class="inline-block text-primary font-label-caps text-[10px] mb-xs">KEMITRAAN</span>
+<h3 class="font-body text-body font-semibold text-on-surface mb-xs line-clamp-2 leading-tight">Kerjasama Strategis dengan Pelindo</h3>
+<p class="text-[14px] text-on-surface-variant line-clamp-2 mt-auto">Membuka peluang magang dan karir bagi kader IKMA berprestasi.</p>
+</div>
+</article>
+<!-- Secondary News 2 (Moved below in grid logic if responsive, but keeping 3 columns layout clean) -->
+<article class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-[0_4px_12px_rgba(28,27,27,0.05)] border-t-[4px] border-primary flex flex-col group hover:shadow-lg transition-shadow md:col-span-1">
+<div class="h-40 overflow-hidden relative">
+<img alt="News Image" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="university campus building with classic architecture against a clear blue sky, students walking in foreground" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsHBtzByBTUhlBxMr0YEkhzZTyOHtzfgTSdjJkdksa3-3VhhxKFY0JbhiGiOS_No8CfelzC8y_I-GQN_ArsMKVRnHkV4FPF7DZ4juwn_GH_Ptyog0_-wCHRBKefGIrttVgb8bTXYT1sXZlUjBXWLVB5WTb3UN8h-PuXSP2aI8ktsZe2phK3vbrfQSS2Y21EqZavatJTfSf5_-kzbVzEpv3mJQyW7j8E-OltkLsL7ci5nzYrVyKOkDDYpMvosAG-biP-lhKnK1fOYg"/>
+</div>
+<div class="p-md flex-grow flex flex-col">
+<span class="inline-block text-primary font-label-caps text-[10px] mb-xs">AKADEMIK</span>
+<h3 class="font-body text-body font-semibold text-on-surface mb-xs line-clamp-2 leading-tight">Penerimaan Mahasiswa Baru Gelombang II</h3>
+<p class="text-[14px] text-on-surface-variant line-clamp-2 mt-auto">Informasi lengkap mengenai jadwal dan persyaratan pendaftaran.</p>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- BPH Highlight -->
+<section class="py-xl px-gutter bg-surface">
+<div class="max-w-container-max mx-auto">
+<div class="text-center mb-xl">
+<h2 class="font-h2 text-h2 text-on-surface mb-sm">Badan Pengurus Harian</h2>
+<p class="font-body text-body text-on-surface-variant">Kepemimpinan IKMA Periode 2024-2025</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-5 gap-lg">
+<!-- BPH Member 1 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-secondary-container p-xs mb-md relative">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img alt="Ketua Umum" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="professional headshot of an asian young man in formal navy blue blazer looking confident, studio lighting, solid grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6gYvLjnHTy2uqQaUkJSVraMeCePIpGj3TW9QhjS_W-uumQLV811jrwd5lA4L_NNm9mENIpZ0rOlrOz6WUydZiRnaajv3PYxN7o86bonp_6FhHygfHVNTeXWVLdEKi6T6xtIENPgI6SRbQXyfD7MY68IK6afjoNC4mBLBASyH3GKKCknLf6QhulDLERXjMY7OXmgmTvHBUfTxIMgdStdZcMD7kF3gIWZ4nefB4iKb09QLVyG1XkGpKzzlX74ywGIO8ssRqnfl6NFE"/>
+</div>
+</div>
+<h3 class="font-h3 text-[18px] text-on-surface font-semibold mb-xs">Ahmad Fauzan</h3>
+<p class="font-label-caps text-label-caps text-primary">KETUA UMUM</p>
+</div>
+<!-- BPH Member 2 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-secondary-container p-xs mb-md relative">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img alt="Wakil Ketua" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="professional headshot of an asian young woman in formal attire looking friendly, studio lighting, solid grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL_p-6MoxGU4u3EfEpZ32hZlbIG_jaXE1cyrUFvpSnlIQalIHB3IMWh-87ngjf4xlvNlVzoh_1eC_qGznUZMJlUaEQFtpCM3Y94rZKhGCmOJdeHkxGdWp9c9ur5suP81bO4s9SMuj0REJzDgC_ZZ8e6tS6Eg2D5qlCoi7woeuN2GkmIWZq_hKeZXXeueYzcXEtgKJ37Y2RxoEg7POJMncNR1CmyMfe0OIC63119pTMJNbCYfOiidMXvwHGAMdYvNnBJubYI74Uo8A"/>
+</div>
+</div>
+<h3 class="font-h3 text-[18px] text-on-surface font-semibold mb-xs">Siti Aminah</h3>
+<p class="font-label-caps text-label-caps text-primary">WAKIL KETUA</p>
+</div>
+<!-- BPH Member 3 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-secondary-container p-xs mb-md relative">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img alt="Sekretaris" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="professional headshot of a young man with glasses in formal shirt, studio lighting, solid grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJbNe-kljWp0FvRZ4ziJhTWPA1mX6VZwz88i8kq71KreicK85_Gtr2yg3_OaAfDak_p8y6YjPKLiO6yOxWlK7e-7NybdGAv1e_1x4u5AXLURUt2sex4GaS_damUL2__d3RtS4NNAnOCy7VLMB5TeJeeqL-MohW2Apvjvajnq2AYtqA9NeTxGjAQ7JgeRflUWYIZp6mgSB0O9Qh3VG-sr5D-AWXtypKIJ377l6EFCGCdOGdiDIZvER2qVFZ7CTThyg77o46XW6PNr0"/>
+</div>
+</div>
+<h3 class="font-h3 text-[18px] text-on-surface font-semibold mb-xs">Budi Santoso</h3>
+<p class="font-label-caps text-label-caps text-primary">SEKRETARIS</p>
+</div>
+<!-- BPH Member 4 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-secondary-container p-xs mb-md relative">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img alt="Bendahara" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="professional headshot of an elegant young woman wearing a hijab in formal attire, studio lighting, solid grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO8d5OUM0UdfPlzFPF-XPOrTuZwHh7g84TL5Bu0KZmhUAqh8uqljtW5q5e6Uf59-WozZljnyeq71RUPvDD25ErlaUVNfH29PW3_LqJ0NSrLHBHQZTP_2w71vw_aaJS1TldwkVkT0JJqrbVglFuNVR8r3cgQDkyqwLcKzE94MfEQD2XzB8hVB8uDXcnfwKuQ0TiWt_LkZiiw157pcNHE0t6QlIkU4S1p68onJ3HZwFqW9kKFQA84bdZOBF0Q_2_R06tre4SOOWGmVI"/>
+</div>
+</div>
+<h3 class="font-h3 text-[18px] text-on-surface font-semibold mb-xs">Nisa Kamila</h3>
+<p class="font-label-caps text-label-caps text-primary">BENDAHARA</p>
+</div>
+<!-- BPH Member 5 -->
+<div class="flex flex-col items-center text-center group col-span-2 md:col-span-1">
+<div class="w-24 h-24 md:w-32 md:h-32 rounded-full border-2 border-secondary-container p-xs mb-md relative">
+<div class="w-full h-full rounded-full overflow-hidden">
+<img alt="Humas" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300" data-alt="professional headshot of a young man smiling slightly in business casual attire, studio lighting, solid grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB0o1LOKbniz3aE9vZ-0FCw4OrUfDbgSOdwYgBmkJI_a2K3AHcFHCbLtyU11ZA0tJiEI2PGxZkk6yrSgej1u-fh4X1-Jc4JYyviKqpUjWfcoZCvYhRCjNDQtFNeF9XiVPArM9JYwJO5UzLzjIQaejX9Epgyg9paYSjJ4RUvz3el9EetKRPurSJ-I_NeVp0j3TEW59AaoEDOr2p-WvZU0sOwjxL0OfV2qIwup7FRTRugPO95yXsgIMnKzd5QnFJWZ2-reBDuPdhp6g"/>
+</div>
+</div>
+<h3 class="font-h3 text-[18px] text-on-surface font-semibold mb-xs">Reza Fahlevi</h3>
+<p class="font-label-caps text-label-caps text-primary">KADIV HUMAS</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Links (Glassmorphism-inspired CTA cards) -->
+<section class="py-xl px-gutter relative overflow-hidden bg-surface-container-highest">
+<!-- Decorative bg -->
+<div class="absolute -right-20 -top-20 w-96 h-96 bg-primary-fixed rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+<div class="max-w-container-max mx-auto relative z-10">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md md:gap-lg">
+<!-- Quick Link 1 -->
+<a class="bg-primary/95 backdrop-blur-sm border border-primary-container p-lg rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col items-center text-center group" href="#">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">newspaper</span>
+</div>
+<h3 class="font-body text-body font-semibold text-on-primary">Baca Berita</h3>
+</a>
+<!-- Quick Link 2 -->
+<a class="bg-primary/95 backdrop-blur-sm border border-primary-container p-lg rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col items-center text-center group" href="#">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">account_tree</span>
+</div>
+<h3 class="font-body text-body font-semibold text-on-primary">Struktur</h3>
+</a>
+<!-- Quick Link 3 -->
+<a class="bg-primary/95 backdrop-blur-sm border border-primary-container p-lg rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col items-center text-center group" href="#">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">how_to_reg</span>
+</div>
+<h3 class="font-body text-body font-semibold text-on-primary">Daftar Kader</h3>
+</a>
+<!-- Quick Link 4 -->
+<a class="bg-primary/95 backdrop-blur-sm border border-primary-container p-lg rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all flex flex-col items-center text-center group" href="#">
+<div class="w-12 h-12 rounded-full bg-secondary-container/20 flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-container" style="font-variation-settings: 'FILL' 1;">fingerprint</span>
+</div>
+<h3 class="font-body text-body font-semibold text-on-primary">Absen</h3>
+</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-[#003F7F] dark:bg-slate-950 w-full mt-auto border-t-4 border-amber-500">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto px-8 py-16">
+<!-- Brand & Copyright -->
+<div class="flex flex-col space-y-4">
+<div class="text-xl font-black text-amber-400 font-newsreader text-sm leading-relaxed">IKMA</div>
+<p class="text-white dark:text-slate-200 font-newsreader text-sm leading-relaxed">
+                    © 2024 Ikatan Keluarga Mahasiswa (IKMA). Institutional Excellence &amp; Maritime Heritage.
+                </p>
+</div>
+<!-- Links Column 1 -->
+<div class="flex flex-col space-y-2">
+<h4 class="text-amber-400 font-bold font-newsreader text-sm leading-relaxed mb-2 uppercase">Connect</h4>
+<a class="text-slate-300 hover:text-white transition-colors duration-300 font-newsreader text-sm leading-relaxed hover:underline decoration-amber-400 underline-offset-4" href="#">Instagram</a>
+<a class="text-slate-300 hover:text-white transition-colors duration-300 font-newsreader text-sm leading-relaxed hover:underline decoration-amber-400 underline-offset-4" href="#">LinkedIn</a>
+</div>
+<!-- Links Column 2 -->
+<div class="flex flex-col space-y-2">
+<h4 class="text-amber-400 font-bold font-newsreader text-sm leading-relaxed mb-2 uppercase">Information</h4>
+<a class="text-slate-300 hover:text-white transition-colors duration-300 font-newsreader text-sm leading-relaxed hover:underline decoration-amber-400 underline-offset-4" href="#">Contact Us</a>
+<a class="text-slate-300 hover:text-white transition-colors duration-300 font-newsreader text-sm leading-relaxed hover:underline decoration-amber-400 underline-offset-4" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+</body></html>

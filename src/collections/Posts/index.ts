@@ -49,6 +49,8 @@ export const Posts: CollectionConfig<'posts'> = {
   },
   admin: {
     defaultColumns: ['title', 'slug', 'updatedAt'],
+    description:
+      'Koleksi berita/artikel publik. Digunakan oleh halaman /berita dan /berita/[slug].',
     livePreview: {
       url: ({ data, req }) =>
         generatePreviewPath({
@@ -80,6 +82,10 @@ export const Posts: CollectionConfig<'posts'> = {
               name: 'heroImage',
               type: 'upload',
               relationTo: 'media',
+              admin: {
+                description:
+                  'Gambar utama artikel. Dipakai pada kartu berita dan hero detail berita.',
+              },
             },
             {
               name: 'content',
@@ -98,6 +104,9 @@ export const Posts: CollectionConfig<'posts'> = {
               }),
               label: false,
               required: true,
+              admin: {
+                description: 'Isi lengkap artikel berita.',
+              },
             },
           ],
           label: 'Content',

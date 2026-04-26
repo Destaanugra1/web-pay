@@ -10,7 +10,14 @@ import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
 import { Footer } from './Footer/config'
+import { GalleryPage } from './globals/GalleryPage'
 import { Header } from './Header/config'
+import { HomePage } from './globals/HomePage'
+import { LoginPage } from './globals/LoginPage'
+import { NewsPage } from './globals/NewsPage'
+import { OrganizationStructure } from './globals/OrganizationStructure'
+import { RegistrationPage } from './globals/RegistrationPage'
+import { SiteSettings } from './globals/SiteSettings'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
@@ -64,7 +71,17 @@ export default buildConfig({
   }),
   collections: [Pages, Posts, Media, Categories, Users],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header, Footer],
+  globals: [
+    Header,
+    Footer,
+    SiteSettings,
+    HomePage,
+    NewsPage,
+    OrganizationStructure,
+    GalleryPage,
+    RegistrationPage,
+    LoginPage,
+  ],
   plugins,
   secret: process.env.PAYLOAD_SECRET,
   sharp,

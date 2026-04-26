@@ -112,10 +112,24 @@ export interface Config {
   globals: {
     header: Header;
     footer: Footer;
+    'site-settings': SiteSetting;
+    'home-page': HomePage;
+    'news-page': NewsPage;
+    'organization-structure': OrganizationStructure;
+    'gallery-page': GalleryPage;
+    'registration-page': RegistrationPage;
+    'login-page': LoginPage;
   };
   globalsSelect: {
     header: HeaderSelect<false> | HeaderSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
+    'site-settings': SiteSettingsSelect<false> | SiteSettingsSelect<true>;
+    'home-page': HomePageSelect<false> | HomePageSelect<true>;
+    'news-page': NewsPageSelect<false> | NewsPageSelect<true>;
+    'organization-structure': OrganizationStructureSelect<false> | OrganizationStructureSelect<true>;
+    'gallery-page': GalleryPageSelect<false> | GalleryPageSelect<true>;
+    'registration-page': RegistrationPageSelect<false> | RegistrationPageSelect<true>;
+    'login-page': LoginPageSelect<false> | LoginPageSelect<true>;
   };
   locale: null;
   widgets: {
@@ -221,13 +235,21 @@ export interface Page {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Koleksi berita/artikel publik. Digunakan oleh halaman /berita dan /berita/[slug].
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts".
  */
 export interface Post {
   id: number;
   title: string;
+  /**
+   * Gambar utama artikel. Dipakai pada kartu berita dan hero detail berita.
+   */
   heroImage?: (number | null) | Media;
+  /**
+   * Isi lengkap artikel berita.
+   */
   content: {
     root: {
       type: string;
@@ -271,12 +293,20 @@ export interface Post {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Pusat semua file gambar/video untuk frontend dan konten admin. Gunakan koleksi ini untuk semua upload field.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
   id: number;
+  /**
+   * Teks alternatif gambar untuk aksesibilitas dan SEO.
+   */
   alt?: string | null;
+  /**
+   * Caption atau keterangan media. Opsional.
+   */
   caption?: {
     root: {
       type: string;
@@ -1657,6 +1687,21 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  cta: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1690,6 +1735,492 @@ export interface Footer {
   createdAt?: string | null;
 }
 /**
+ * Pengaturan identitas utama website. Konten di sini dipakai lintas halaman untuk logo, footer, dan informasi kontak.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings".
+ */
+export interface SiteSetting {
+  id: number;
+  /**
+   * Nama lengkap organisasi atau situs untuk metadata dan identitas utama.
+   */
+  siteName: string;
+  /**
+   * Versi singkat nama situs, berguna untuk label kecil atau singkatan.
+   */
+  shortName: string;
+  /**
+   * Logo utama organisasi. Jika diisi, logo ini akan diprioritaskan di header dan footer.
+   */
+  logoImage?: (number | null) | Media;
+  /**
+   * Teks utama di logo jika tidak memakai gambar.
+   */
+  logoTitle?: string | null;
+  /**
+   * Teks kecil di bawah judul logo.
+   */
+  logoSubtitle?: string | null;
+  /**
+   * Inisial atau monogram singkat untuk badge/logo bulat.
+   */
+  logoMark?: string | null;
+  /**
+   * Deskripsi singkat situs yang ditampilkan di area footer.
+   */
+  footerDescription?: string | null;
+  /**
+   * Judul blok kontak di footer.
+   */
+  contactSectionTitle?: string | null;
+  /**
+   * Alamat sekretariat atau kantor utama organisasi.
+   */
+  address?: string | null;
+  /**
+   * Email publik yang tampil di footer.
+   */
+  email?: string | null;
+  /**
+   * Nomor kontak utama organisasi.
+   */
+  phone?: string | null;
+  /**
+   * Teks copyright yang muncul di footer.
+   */
+  copyright?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Konten untuk halaman beranda. Semua hero, statistik, quick links, dan section utama diatur dari sini.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page".
+ */
+export interface HomePage {
+  id: number;
+  /**
+   * Teks singkat di badge bulat area hero, misalnya singkatan organisasi.
+   */
+  heroBadgeText?: string | null;
+  /**
+   * Gambar hero beranda. Jika diisi, gambar ini ditampilkan sebagai badge visual utama.
+   */
+  heroImage?: (number | null) | Media;
+  /**
+   * Judul besar utama di halaman home.
+   */
+  heroTitle: string;
+  /**
+   * Deskripsi utama hero untuk menjelaskan organisasi atau misi utama.
+   */
+  heroDescription: string;
+  /**
+   * Tombol utama di hero beranda, misalnya ke pendaftaran atau halaman penting.
+   */
+  heroCTA: {
+    type?: ('reference' | 'custom') | null;
+    newTab?: boolean | null;
+    reference?:
+      | ({
+          relationTo: 'pages';
+          value: number | Page;
+        } | null)
+      | ({
+          relationTo: 'posts';
+          value: number | Post;
+        } | null);
+    url?: string | null;
+    label: string;
+  };
+  /**
+   * Section pengenalan organisasi di bawah hero.
+   */
+  aboutSection: {
+    /**
+     * Label kecil di atas judul section.
+     */
+    eyebrow?: string | null;
+    /**
+     * Judul utama section pengenalan.
+     */
+    title: string;
+    /**
+     * Paragraf penjelasan ringkas tentang organisasi.
+     */
+    description: string;
+    /**
+     * Kartu-kartu pengenalan beranda. Cocok untuk menampilkan keunggulan organisasi.
+     */
+    cards?:
+      | {
+          icon?: ('users' | 'building' | 'calendar' | 'news' | 'sailboat') | null;
+          title: string;
+          description: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Panel visual besar di samping section pengenalan.
+   */
+  showcase?: {
+    /**
+     * Label kecil untuk panel showcase.
+     */
+    label?: string | null;
+    /**
+     * Gambar panel showcase. Jika kosong, halaman tetap memakai gradient visual.
+     */
+    image?: (number | null) | Media;
+    /**
+     * Teks isi panel showcase.
+     */
+    description?: string | null;
+  };
+  /**
+   * Statistik ringkas yang tampil dalam bentuk kartu di home.
+   */
+  stats?:
+    | {
+        label: string;
+        value: string;
+        icon?: ('users' | 'calendar' | 'news' | 'building') | null;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Pengaturan section teaser berita di beranda.
+   */
+  newsSection: {
+    title: string;
+    description?: string | null;
+    ctaLabel?: string | null;
+  };
+  /**
+   * Judul dan deskripsi area BPH di beranda.
+   */
+  leadershipSection: {
+    title: string;
+    description?: string | null;
+  };
+  /**
+   * Daftar tautan cepat yang tampil sebagai panel navigasi di bagian bawah home.
+   */
+  quickLinks?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Pengaturan visual dan copy untuk halaman listing berita serta sebagian panel di detail berita.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news-page".
+ */
+export interface NewsPage {
+  id: number;
+  /**
+   * Gambar hero halaman berita. Jika kosong, halaman tetap memakai gaya visual default.
+   */
+  heroImage?: (number | null) | Media;
+  /**
+   * Judul hero di halaman berita.
+   */
+  heroTitle: string;
+  /**
+   * Deskripsi hero di halaman berita.
+   */
+  heroDescription: string;
+  /**
+   * Pengaturan copy untuk listing artikel.
+   */
+  listing: {
+    eyebrow?: string | null;
+    title: string;
+    description?: string | null;
+    searchPlaceholder?: string | null;
+    archiveTitle?: string | null;
+    readMoreLabel?: string | null;
+  };
+  /**
+   * Pengaturan copy panel tambahan di halaman detail berita.
+   */
+  detail?: {
+    trendingTitle?: string | null;
+    shareTitle?: string | null;
+    shareDescription?: string | null;
+    highlightText?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Data struktur organisasi, pimpinan, anggota inti, dan divisi. Dipakai untuk halaman struktur dan sebagian beranda.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organization-structure".
+ */
+export interface OrganizationStructure {
+  id: number;
+  /**
+   * Gambar hero halaman struktur. Opsional, untuk memperjelas identitas halaman.
+   */
+  heroImage?: (number | null) | Media;
+  /**
+   * Judul hero halaman struktur.
+   */
+  heroTitle: string;
+  /**
+   * Deskripsi hero halaman struktur.
+   */
+  heroDescription: string;
+  /**
+   * Data pimpinan utama organisasi.
+   */
+  leader: {
+    name: string;
+    role: string;
+    photo?: (number | null) | Media;
+  };
+  /**
+   * Anggota inti yang tampil di bawah pimpinan utama.
+   */
+  coreMembers?:
+    | {
+        name: string;
+        role: string;
+        photo?: (number | null) | Media;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Judul section daftar divisi.
+   */
+  divisionsSectionTitle: string;
+  /**
+   * Deskripsi singkat section divisi.
+   */
+  divisionsSectionDescription?: string | null;
+  /**
+   * Daftar divisi/bidang kerja organisasi.
+   */
+  divisions?:
+    | {
+        name: string;
+        leadName: string;
+        leadRole?: string | null;
+        leadPhoto?: (number | null) | Media;
+        tasks?:
+          | {
+              task: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Konten halaman galeri atau Foto BPH. Isi tab, judul section, dan item dokumentasi dari sini.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery-page".
+ */
+export interface GalleryPage {
+  id: number;
+  /**
+   * Gambar hero galeri. Jika kosong, halaman tetap menggunakan tampilan visual default.
+   */
+  heroImage?: (number | null) | Media;
+  /**
+   * Judul hero halaman galeri.
+   */
+  heroTitle: string;
+  /**
+   * Deskripsi hero halaman galeri.
+   */
+  heroDescription: string;
+  /**
+   * Tab filter visual di atas galeri. Saat ini dipakai sebagai label tampilan.
+   */
+  tabs?:
+    | {
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Judul utama section galeri.
+   */
+  sectionTitle: string;
+  /**
+   * Deskripsi section galeri.
+   */
+  sectionDescription?: string | null;
+  /**
+   * Daftar item galeri yang akan dirender di frontend.
+   */
+  items?:
+    | {
+        title: string;
+        description?: string | null;
+        image?: (number | null) | Media;
+        accent?: ('gold' | 'blue') | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Konten halaman pendaftaran kader. Mengatur copy, pilihan fakultas/divisi, dan label form.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-page".
+ */
+export interface RegistrationPage {
+  id: number;
+  /**
+   * Teks kecil di badge hero pendaftaran.
+   */
+  heroBadgeText?: string | null;
+  /**
+   * Gambar hero halaman pendaftaran. Opsional untuk visual tambahan jika dibutuhkan.
+   */
+  heroImage?: (number | null) | Media;
+  /**
+   * Judul hero halaman pendaftaran.
+   */
+  heroTitle: string;
+  /**
+   * Deskripsi hero yang menjelaskan tujuan pendaftaran.
+   */
+  heroDescription: string;
+  /**
+   * Judul utama kartu/form pendaftaran.
+   */
+  formTitle: string;
+  /**
+   * Deskripsi singkat yang muncul di atas form.
+   */
+  formDescription?: string | null;
+  /**
+   * Label stepper visual di bagian atas form.
+   */
+  stepLabels?:
+    | {
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Daftar pilihan fakultas/asal yang tampil di select form.
+   */
+  facultyOptions?:
+    | {
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Daftar divisi yang bisa dipilih calon kader.
+   */
+  divisionOptions?:
+    | {
+        label: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * Teks penjelasan area upload dokumen.
+   */
+  uploadLabel?: string | null;
+  /**
+   * Label tombol submit utama.
+   */
+  submitLabel?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * Konten halaman login publik. Mengatur branding panel kiri, panel form kanan, dan opsi login sekunder.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "login-page".
+ */
+export interface LoginPage {
+  id: number;
+  /**
+   * Gambar/ilustrasi branding untuk panel kiri halaman login. Opsional, jika kosong tetap pakai style default.
+   */
+  brandImage?: (number | null) | Media;
+  /**
+   * Judul besar pada panel branding sebelah kiri.
+   */
+  brandTitle: string;
+  /**
+   * Deskripsi branding atau konteks akses portal.
+   */
+  brandDescription: string;
+  /**
+   * Judul utama panel form login.
+   */
+  panelTitle: string;
+  /**
+   * Deskripsi singkat di atas form login.
+   */
+  panelDescription?: string | null;
+  /**
+   * Label tombol submit login.
+   */
+  submitLabel?: string | null;
+  /**
+   * Path tujuan setelah login berhasil, misalnya /admin.
+   */
+  successRedirect?: string | null;
+  /**
+   * Label pemisah untuk opsi login alternatif.
+   */
+  secondaryAuthLabel?: string | null;
+  /**
+   * Tombol login alternatif seperti SSO atau portal lain.
+   */
+  secondaryAuthOptions?:
+    | {
+        label: string;
+        description?: string | null;
+        url: string;
+        icon?: ('shield' | 'globe') | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
  */
@@ -1707,6 +2238,15 @@ export interface HeaderSelect<T extends boolean = true> {
               label?: T;
             };
         id?: T;
+      };
+  cta?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -1729,6 +2269,270 @@ export interface FooterSelect<T extends boolean = true> {
               url?: T;
               label?: T;
             };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "site-settings_select".
+ */
+export interface SiteSettingsSelect<T extends boolean = true> {
+  siteName?: T;
+  shortName?: T;
+  logoImage?: T;
+  logoTitle?: T;
+  logoSubtitle?: T;
+  logoMark?: T;
+  footerDescription?: T;
+  contactSectionTitle?: T;
+  address?: T;
+  email?: T;
+  phone?: T;
+  copyright?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page_select".
+ */
+export interface HomePageSelect<T extends boolean = true> {
+  heroBadgeText?: T;
+  heroImage?: T;
+  heroTitle?: T;
+  heroDescription?: T;
+  heroCTA?:
+    | T
+    | {
+        type?: T;
+        newTab?: T;
+        reference?: T;
+        url?: T;
+        label?: T;
+      };
+  aboutSection?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        description?: T;
+        cards?:
+          | T
+          | {
+              icon?: T;
+              title?: T;
+              description?: T;
+              id?: T;
+            };
+      };
+  showcase?:
+    | T
+    | {
+        label?: T;
+        image?: T;
+        description?: T;
+      };
+  stats?:
+    | T
+    | {
+        label?: T;
+        value?: T;
+        icon?: T;
+        id?: T;
+      };
+  newsSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        ctaLabel?: T;
+      };
+  leadershipSection?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+      };
+  quickLinks?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "news-page_select".
+ */
+export interface NewsPageSelect<T extends boolean = true> {
+  heroImage?: T;
+  heroTitle?: T;
+  heroDescription?: T;
+  listing?:
+    | T
+    | {
+        eyebrow?: T;
+        title?: T;
+        description?: T;
+        searchPlaceholder?: T;
+        archiveTitle?: T;
+        readMoreLabel?: T;
+      };
+  detail?:
+    | T
+    | {
+        trendingTitle?: T;
+        shareTitle?: T;
+        shareDescription?: T;
+        highlightText?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "organization-structure_select".
+ */
+export interface OrganizationStructureSelect<T extends boolean = true> {
+  heroImage?: T;
+  heroTitle?: T;
+  heroDescription?: T;
+  leader?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+        photo?: T;
+      };
+  coreMembers?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+        photo?: T;
+        id?: T;
+      };
+  divisionsSectionTitle?: T;
+  divisionsSectionDescription?: T;
+  divisions?:
+    | T
+    | {
+        name?: T;
+        leadName?: T;
+        leadRole?: T;
+        leadPhoto?: T;
+        tasks?:
+          | T
+          | {
+              task?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "gallery-page_select".
+ */
+export interface GalleryPageSelect<T extends boolean = true> {
+  heroImage?: T;
+  heroTitle?: T;
+  heroDescription?: T;
+  tabs?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  sectionTitle?: T;
+  sectionDescription?: T;
+  items?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        accent?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "registration-page_select".
+ */
+export interface RegistrationPageSelect<T extends boolean = true> {
+  heroBadgeText?: T;
+  heroImage?: T;
+  heroTitle?: T;
+  heroDescription?: T;
+  formTitle?: T;
+  formDescription?: T;
+  stepLabels?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  facultyOptions?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  divisionOptions?:
+    | T
+    | {
+        label?: T;
+        id?: T;
+      };
+  uploadLabel?: T;
+  submitLabel?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "login-page_select".
+ */
+export interface LoginPageSelect<T extends boolean = true> {
+  brandImage?: T;
+  brandTitle?: T;
+  brandDescription?: T;
+  panelTitle?: T;
+  panelDescription?: T;
+  submitLabel?: T;
+  successRedirect?: T;
+  secondaryAuthLabel?: T;
+  secondaryAuthOptions?:
+    | T
+    | {
+        label?: T;
+        description?: T;
+        url?: T;
+        icon?: T;
         id?: T;
       };
   updatedAt?: T;

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Berita IKMA - Institutional Excellence &amp; Maritime Heritage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Newsreader:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "tertiary-fixed": "#dbe3ea",
+                            "surface-container-low": "#f6f3f2",
+                            "tertiary-container": "#394146",
+                            "secondary-fixed": "#ffe088",
+                            "on-primary-fixed-variant": "#0f4686",
+                            "on-error-container": "#93000a",
+                            "tertiary": "#232b30",
+                            "background": "#fcf9f8",
+                            "surface-bright": "#fcf9f8",
+                            "error-container": "#ffdad6",
+                            "on-surface": "#1c1b1b",
+                            "on-secondary-fixed-variant": "#574500",
+                            "surface-container-lowest": "#ffffff",
+                            "secondary-container": "#fed65b",
+                            "tertiary-fixed-dim": "#bfc8ce",
+                            "primary-fixed-dim": "#a9c7ff",
+                            "on-secondary-fixed": "#241a00",
+                            "outline": "#737781",
+                            "on-secondary-container": "#745c00",
+                            "on-primary-fixed": "#001b3d",
+                            "on-tertiary-fixed-variant": "#40484d",
+                            "outline-variant": "#c3c6d2",
+                            "inverse-primary": "#a9c7ff",
+                            "surface-dim": "#dcd9d9",
+                            "on-tertiary": "#ffffff",
+                            "on-primary": "#ffffff",
+                            "surface-variant": "#e5e2e1",
+                            "primary-fixed": "#d6e3ff",
+                            "on-background": "#1c1b1b",
+                            "secondary-fixed-dim": "#e9c349",
+                            "error": "#ba1a1a",
+                            "primary-container": "#003f7f",
+                            "surface-container": "#f0eded",
+                            "surface-tint": "#315ea0",
+                            "secondary": "#735c00",
+                            "on-tertiary-container": "#a5adb3",
+                            "inverse-surface": "#313030",
+                            "on-error": "#ffffff",
+                            "on-tertiary-fixed": "#151d22",
+                            "surface-container-highest": "#e5e2e1",
+                            "surface-container-high": "#eae7e7",
+                            "on-surface-variant": "#434750",
+                            "surface": "#fcf9f8",
+                            "primary": "#002957",
+                            "inverse-on-surface": "#f3f0ef",
+                            "on-primary-container": "#83acf3",
+                            "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "base": "8px",
+                            "xs": "4px",
+                            "sm": "8px",
+                            "lg": "24px",
+                            "gutter": "24px",
+                            "container-max": "1200px",
+                            "md": "16px",
+                            "xl": "48px"
+                    },
+                    "fontFamily": {
+                            "h1": [
+                                    "Newsreader"
+                            ],
+                            "h2": [
+                                    "Newsreader"
+                            ],
+                            "body": [
+                                    "Inter"
+                            ],
+                            "h3": [
+                                    "Newsreader"
+                            ],
+                            "label-caps": [
+                                    "Inter"
+                            ]
+                    },
+                    "fontSize": {
+                            "h1": [
+                                    "48px",
+                                    {
+                                            "lineHeight": "1.2",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "h2": [
+                                    "36px",
+                                    {
+                                            "lineHeight": "1.25",
+                                            "fontWeight": "600"
+                                    }
+                            ],
+                            "body": [
+                                    "16px",
+                                    {
+                                            "lineHeight": "1.6",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "h3": [
+                                    "24px",
+                                    {
+                                            "lineHeight": "1.3",
+                                            "fontWeight": "500"
+                                    }
+                            ],
+                            "label-caps": [
+                                    "12px",
+                                    {
+                                            "lineHeight": "1",
+                                            "letterSpacing": "0.1em",
+                                            "fontWeight": "600"
+                                    }
+                            ]
+                    }
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body text-body min-h-screen flex flex-col antialiased">
+<!-- TopNavBar -->
+<nav class="bg-[#003F7F] dark:bg-slate-950 text-white dark:text-slate-100 font-newsreader tracking-tight sticky top-0 w-full z-50 shadow-lg border-b border-blue-800 dark:border-slate-800">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<div class="text-2xl font-bold text-white uppercase tracking-wider">
+                IKMA
+            </div>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium h-full flex items-center hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">HOME</a>
+<a class="text-amber-400 border-b-2 border-amber-400 pb-1 font-semibold h-full flex items-center hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">BERITA</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium h-full flex items-center hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">STRUKTUR ORG</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium h-full flex items-center hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">FOTO BPH</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium h-full flex items-center hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">DAFTAR KADER</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium h-full flex items-center hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">ABSEN</a>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow max-w-container-max mx-auto w-full px-lg py-xl flex flex-col gap-xl">
+<!-- Header & Search -->
+<div class="flex flex-col md:flex-row justify-between items-end gap-lg border-b border-outline-variant pb-md">
+<div>
+<h1 class="font-h1 text-h1 text-primary">Berita IKMA</h1>
+<p class="text-on-surface-variant mt-sm">Latest updates and announcements from the institution.</p>
+</div>
+<div class="relative w-full md:w-auto">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full md:w-64 pl-10 pr-4 py-2 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-colors" placeholder="Search news..." type="text"/>
+</div>
+</div>
+<!-- Featured Post Bento -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Featured Large -->
+<article class="lg:col-span-2 bg-surface-container-lowest rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.05)] overflow-hidden border-t-[4px] border-secondary-container hover:shadow-[0_8px_24px_rgba(28,27,27,0.1)] transition-shadow duration-300 flex flex-col relative group cursor-pointer">
+<div class="relative h-64 sm:h-80 w-full overflow-hidden">
+<img alt="Students in uniform participating in a formal maritime ceremony" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="large group of naval academy students in white uniforms standing in perfect formation during a sunny outdoor graduation ceremony" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh8VkX7SBtAq6-X0xIjnc0DJ18ito6TGcefr8WTtQqpfvfyy4erFHB5q66XpoqJJhc03QrS-Af2M6WHGNd6Tz6uYPgPkt1vXxmM8riVEoaHb5NRFgH72fj0kmJwEG_EeZAKIvVKbjD7QqKzofIvqpCwmwEUHoqfMCd7yKL4oDTTrwiZtapBNowwJB-T40XSnXJuBGaDOp8mHa0JzNGOJwRIV_oOxih3q8O7Xuk6ad_qVxmB_Tu1BK9zGnd6gqmkY_O2FjpLDo7Y-A"/>
+<div class="absolute top-4 left-4 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-3 py-1 rounded-DEFAULT shadow-sm uppercase tracking-wider">
+                        Featured
+                    </div>
+</div>
+<div class="p-lg flex flex-col flex-grow">
+<span class="text-outline text-sm font-body mb-xs">October 24, 2024</span>
+<h2 class="font-h2 text-h2 text-primary mb-sm">Annual Maritime Heritage Symposium Concludes Successfully</h2>
+<p class="text-on-surface-variant mb-md flex-grow">The three-day event brought together maritime experts, alumni, and current cadets to discuss the future of sustainable ocean navigation and institutional legacy.</p>
+<div class="flex items-center text-secondary font-semibold hover:text-on-secondary-container transition-colors">
+                        Read More <span class="material-symbols-outlined ml-1 text-[18px]">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- Featured Sidebar Small -->
+<div class="flex flex-col gap-gutter">
+<article class="bg-surface-container-lowest rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.05)] overflow-hidden border-t-[4px] border-primary-container hover:shadow-[0_8px_24px_rgba(28,27,27,0.1)] transition-shadow duration-300 flex flex-col cursor-pointer group">
+<div class="h-32 w-full overflow-hidden">
+<img alt="Students studying in library" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="quiet library scene with wooden desks and warm lighting, focused students reviewing large nautical charts and textbooks" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANk2zC-WkiOMht09-Y9wV-PKDlsOQofC9JjHCbWLteszsxHAVetCNVxP0cOvREJjW0pirjFHIhjtGkFQzRL2EAsDF_tIk5iAIr8yKzxBEFLXv3En0f1MPldsm-3p_IUSLEqXfZwsqtnByeeEzAkxy0j6hHt_LJfZWrXSTq6gCFn0gA1xafjuV0W7anV5bQK_UF1dqsvOjioftw0IgWJcjjW9VbontW9jZvLQkeYY-I62vETEJCbU8nhzHbV19q-p3oAQlz6Bt87sE"/>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex justify-between items-center mb-xs">
+<span class="bg-primary-container text-on-primary rounded px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider">Academic</span>
+<span class="text-outline text-xs">Oct 22, 2024</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-sm leading-tight text-xl">New Navigation Curriculum Introduced</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2 mb-sm flex-grow">Updated coursework aligns with modern international maritime standards.</p>
+<div class="flex items-center text-secondary font-semibold text-sm hover:text-on-secondary-container transition-colors mt-auto">
+                            Read More <span class="material-symbols-outlined ml-1 text-[16px]">arrow_forward</span>
+</div>
+</div>
+</article>
+<article class="bg-surface-container-lowest rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.05)] overflow-hidden border-t-[4px] border-tertiary-container hover:shadow-[0_8px_24px_rgba(28,27,27,0.1)] transition-shadow duration-300 flex flex-col cursor-pointer group">
+<div class="h-32 w-full overflow-hidden">
+<img alt="Students collaborating" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="diverse group of students in professional attire collaborating around a modern conference table with laptops and documents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC3sQurkL96IJ8BFlDr0pykiWSG8SqiD3kc0yG3-Zh2uY6ssyFX4Kd8SEM9W_BktXCugT6JiO-NNtu4ATIk1ijMiyZZvQD_4wRZ7Wl6nCWUqkWFI2tLGnCp8SO7UvNfqoglMBDzXCpSYBExXXs425CLhEsME72OX9KJFSb78_CaCnR7qzPQBN8A56j3DRj6WGQrljq9l3l0Z46nnA4ErlqRkbbNHMvqzvw5ms4fjWUo3ckTN3h5KKVbu5E7bE4L6GbYV0xKq7waAE"/>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex justify-between items-center mb-xs">
+<span class="bg-tertiary-container text-on-tertiary rounded px-2 py-0.5 text-[10px] uppercase font-bold tracking-wider">Event</span>
+<span class="text-outline text-xs">Oct 20, 2024</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-sm leading-tight text-xl">Leadership Workshop Registration Open</h3>
+<p class="text-on-surface-variant text-sm line-clamp-2 mb-sm flex-grow">Join the upcoming weekend retreat focused on commanding presence.</p>
+<div class="flex items-center text-secondary font-semibold text-sm hover:text-on-secondary-container transition-colors mt-auto">
+                            Read More <span class="material-symbols-outlined ml-1 text-[16px]">arrow_forward</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- News Grid -->
+<section>
+<h3 class="font-h3 text-h3 text-on-surface mb-lg pb-sm border-b border-outline-variant inline-block">Recent Updates</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- News Card 1 -->
+<article class="bg-surface-container-lowest rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.05)] overflow-hidden border-t-[4px] border-primary-container hover:shadow-[0_8px_24px_rgba(28,27,27,0.1)] transition-shadow duration-300 flex flex-col group cursor-pointer">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Ship at sea" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="large training vessel sailing on deep blue ocean waters under a clear sky with mild waves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD1_s_dHqCbm97Xu5ECrZoEtar8hbeprSEs2ibXZAaYWTdLz4fpZuPXcghxkt5QdObRnq7_o74DTDfAGo2k0cEdAqJFIwpEyByike-8v9oDZXlNQ-94NJxVNia5MOZDEGXmAs_DiVYbyILtXlgBNq3VlFsIOr_voN4sDhrwp_a6RtN5v-wGo-3PyPnsWQZS1AAMWa7GaF5UW7OSSTt_UMhTaNOv_3UwTILTBvbn2kBqTvVaHH0DiVXrrcSa8APzHyrs2I-RRDE3LQ"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-2 py-1 rounded-sm shadow-sm uppercase tracking-wider text-[10px]">
+                            Announcement
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<span class="text-outline text-sm font-body mb-xs">October 18, 2024</span>
+<h4 class="font-h3 text-h3 text-primary mb-sm leading-tight text-xl font-semibold">Training Vessel Schedule Updated for Fall Semester</h4>
+<p class="text-on-surface-variant text-sm line-clamp-3 mb-md flex-grow">Review the revised deployment dates for the upcoming practical navigation exercises at sea.</p>
+<div class="flex items-center text-secondary font-semibold text-sm hover:text-on-secondary-container transition-colors mt-auto">
+                            Read More <span class="material-symbols-outlined ml-1 text-[16px]">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- News Card 2 -->
+<article class="bg-surface-container-lowest rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.05)] overflow-hidden border-t-[4px] border-primary-container hover:shadow-[0_8px_24px_rgba(28,27,27,0.1)] transition-shadow duration-300 flex flex-col group cursor-pointer">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Graduation cap and diploma" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="academic setting with graduation cap resting on a stack of traditional maritime law books near a sunny window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTbkJeHtdJg1wcZV0M0kX8UQkgrsp7WbOkRCsOnOTuDUn8_t9BnEiFiy8y5JDInOerW7VQrjff_o96PgRl8--CeAnhJwnFxjHmi5WkHX0Fo0nWpvYEJznRGv17jQvg1nCoXFrgAeWClDeTf0fq14rfrGyCviTdVgu7yNf1a7Fm2Zgv3iGW7dPWwbfEU1ted5IWyf42Rze304hPoXXuW6v4MHGjaelXlFWcQsRkI-1J88GBh9zeNLOJv_ix7NOUJu1mB8wzNQBvB74"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-2 py-1 rounded-sm shadow-sm uppercase tracking-wider text-[10px]">
+                            Academic
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<span class="text-outline text-sm font-body mb-xs">October 15, 2024</span>
+<h4 class="font-h3 text-h3 text-primary mb-sm leading-tight text-xl font-semibold">Scholarship Applications Now Open for Senior Cadets</h4>
+<p class="text-on-surface-variant text-sm line-clamp-3 mb-md flex-grow">The Alumni Association is accepting applications for the Maritime Excellence Scholarship.</p>
+<div class="flex items-center text-secondary font-semibold text-sm hover:text-on-secondary-container transition-colors mt-auto">
+                            Read More <span class="material-symbols-outlined ml-1 text-[16px]">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- News Card 3 -->
+<article class="bg-surface-container-lowest rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.05)] overflow-hidden border-t-[4px] border-primary-container hover:shadow-[0_8px_24px_rgba(28,27,27,0.1)] transition-shadow duration-300 flex flex-col group cursor-pointer">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Team collaborating" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="close up of hands working together on a complex ship rigging rope knot demonstrating teamwork" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoBGgvY2cRT_fNWI0qHQEJuyZdRaskDUWR3flbISdyYcKtoWxMNORlJw37Fg259ckttTvmW6Nl8Qi7ds7XNxQlMdRSGbkoUBNE6NBGQjlFgDQrCMOcq31gK0FkhD1W7BtSLSyPKnrAc9-zFMye9QJR4y6tayb5tmPz8kFIJjZkW_uJ4xtYHPq3oY7klNU4TCRcYweERWNkDmRJpve1WQSu11On0CJ3McKLxDcCL9Kj416K7CJx2TSnJlMzUUNiZv1GsGLb9ispCpk"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-2 py-1 rounded-sm shadow-sm uppercase tracking-wider text-[10px]">
+                            Community
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<span class="text-outline text-sm font-body mb-xs">October 10, 2024</span>
+<h4 class="font-h3 text-h3 text-primary mb-sm leading-tight text-xl font-semibold">Coastal Cleanup Drive Gathers Record Participation</h4>
+<p class="text-on-surface-variant text-sm line-clamp-3 mb-md flex-grow">Over 200 members of IKMA volunteered this weekend to clear debris from the local harbor area.</p>
+<div class="flex items-center text-secondary font-semibold text-sm hover:text-on-secondary-container transition-colors mt-auto">
+                            Read More <span class="material-symbols-outlined ml-1 text-[16px]">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- News Card 4 -->
+<article class="bg-surface-container-lowest rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.05)] overflow-hidden border-t-[4px] border-primary-container hover:shadow-[0_8px_24px_rgba(28,27,27,0.1)] transition-shadow duration-300 flex flex-col group cursor-pointer">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Ship wheel" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="classic wooden ship steering wheel in sharp focus with blurred ocean background in bright daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU2FgVwXIaWhBPdEYGzSWzkVozWxmegOUJD-EQn9QvEgQIUZ-dgF-jJZbjXz55OFokhhRxXoDd206y-_kNkxBiBlww4tWzZsn3rk9yDTaN-JJj8C0B3tjNoaIHa-BL2YF6FGiVidrjFMhynSfBv3QlExodIrJce0ayagQgl1Gf3_oyvkleN8_LqWsuAXZV1_Kfx_2QvdN971HWOlk6AHFazfC83caXTbe7GOTXykjhVX9mWiQhXUAUoPlTDPecIFyOeYY1bDSDxh8"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-2 py-1 rounded-sm shadow-sm uppercase tracking-wider text-[10px]">
+                            Heritage
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<span class="text-outline text-sm font-body mb-xs">October 05, 2024</span>
+<h4 class="font-h3 text-h3 text-primary mb-sm leading-tight text-xl font-semibold">Historical Archives Now Digitized for Student Access</h4>
+<p class="text-on-surface-variant text-sm line-clamp-3 mb-md flex-grow">Decades of institutional history, logs, and photographs are now available via the new portal.</p>
+<div class="flex items-center text-secondary font-semibold text-sm hover:text-on-secondary-container transition-colors mt-auto">
+                            Read More <span class="material-symbols-outlined ml-1 text-[16px]">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- News Card 5 -->
+<article class="bg-surface-container-lowest rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.05)] overflow-hidden border-t-[4px] border-primary-container hover:shadow-[0_8px_24px_rgba(28,27,27,0.1)] transition-shadow duration-300 flex flex-col group cursor-pointer">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Compass and map" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="vintage brass compass resting on an old nautical chart with warm directional lighting emphasizing texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoG1qp-dkqdNxEQUt7utP5kpHahA2z2QDOl02EoxLAb9eyvkl7OpUF95292fDGpVmty1t7rEHXn_AXsRv4Il8VW6MELqJwIOsgsZoDCQovYVA41KNo148vsBiTLPvQWTRKXc-qcqG6lYqNivuF6MdpPRH9Kf0Vrb_zGdLmIqycj6o36KygiOrwXWg5wIPzuPJY92gLljQwTtdNZ9z5fIpVYpWmMrcebrJia3SGoxZvIdEKoVqIlU0FiNMIzim3xA8ljPSA-rbQQZM"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-2 py-1 rounded-sm shadow-sm uppercase tracking-wider text-[10px]">
+                            Academic
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<span class="text-outline text-sm font-body mb-xs">October 01, 2024</span>
+<h4 class="font-h3 text-h3 text-primary mb-sm leading-tight text-xl font-semibold">Guest Lecture: Advanced Celestial Navigation</h4>
+<p class="text-on-surface-variant text-sm line-clamp-3 mb-md flex-grow">Captain H. Sterling will deliver a masterclass on traditional navigation techniques next Tuesday.</p>
+<div class="flex items-center text-secondary font-semibold text-sm hover:text-on-secondary-container transition-colors mt-auto">
+                            Read More <span class="material-symbols-outlined ml-1 text-[16px]">arrow_forward</span>
+</div>
+</div>
+</article>
+<!-- News Card 6 -->
+<article class="bg-surface-container-lowest rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.05)] overflow-hidden border-t-[4px] border-primary-container hover:shadow-[0_8px_24px_rgba(28,27,27,0.1)] transition-shadow duration-300 flex flex-col group cursor-pointer">
+<div class="h-48 w-full overflow-hidden relative">
+<img alt="Sports event" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="rowing team in action on the water during a sunny day with water splashing from the oars" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUL8Nc4tzxxu-IuAhXdRcayu5dVXXfbxhFTkjeeAAfWEicxkWty3o2auqBMDzYtB_s6rvVVenanA4M1O4hAknkybVnUAKjGzurfToL_Cw0iuxCN_j40AI5TuFrGuh6PJE_foQCczfJ0AXxfv4WV43tM16ucaq6-fYcDTHmd3NuZLOJmxaKoLs6qwWEoWQnmJbrf8-ZA_PDBSq2Q3uuIk6gIZEkzggfTb1v2Xz_C-EKh_UyV1N35ekVeh67IC12EIoYme0iNTrJcdU"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps px-2 py-1 rounded-sm shadow-sm uppercase tracking-wider text-[10px]">
+                            Athletics
+                        </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<span class="text-outline text-sm font-body mb-xs">September 28, 2024</span>
+<h4 class="font-h3 text-h3 text-primary mb-sm leading-tight text-xl font-semibold">IKMA Rowing Team Secures Regional Championship</h4>
+<p class="text-on-surface-variant text-sm line-clamp-3 mb-md flex-grow">A thrilling finish led our varsity team to victory at the annual inter-academy regatta.</p>
+<div class="flex items-center text-secondary font-semibold text-sm hover:text-on-secondary-container transition-colors mt-auto">
+                            Read More <span class="material-symbols-outlined ml-1 text-[16px]">arrow_forward</span>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Pagination -->
+<div class="flex justify-center items-center gap-md pt-lg border-t border-outline-variant mt-lg">
+<button class="px-4 py-2 border-2 border-outline-variant text-on-surface-variant rounded-DEFAULT hover:border-primary hover:text-primary transition-colors flex items-center gap-2 font-medium opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined text-[20px]">chevron_left</span> Previous
+            </button>
+<div class="hidden sm:flex items-center gap-2 font-medium text-on-surface-variant">
+<span class="w-8 h-8 flex items-center justify-center bg-primary text-on-primary rounded-full">1</span>
+<span class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-full cursor-pointer transition-colors">2</span>
+<span class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-full cursor-pointer transition-colors">3</span>
+<span>...</span>
+<span class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-high rounded-full cursor-pointer transition-colors">8</span>
+</div>
+<button class="px-4 py-2 border-2 border-secondary text-secondary rounded-DEFAULT hover:bg-secondary hover:text-on-secondary transition-colors flex items-center gap-2 font-medium">
+                Next <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#003F7F] dark:bg-slate-950 text-white dark:text-slate-200 font-newsreader text-sm leading-relaxed w-full mt-auto border-t-4 border-amber-500 flat no shadows transition-all duration-300">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto px-8 py-16">
+<div class="flex flex-col gap-4">
+<div class="text-xl font-black text-amber-400">
+                    IKMA
+                </div>
+<p>© 2024 Ikatan Keluarga Mahasiswa (IKMA). Institutional Excellence &amp; Maritime Heritage.</p>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-amber-400 text-lg">Quick Links</h4>
+<div class="flex flex-col gap-2">
+<a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-amber-400 underline-offset-4" href="#">Instagram</a>
+<a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-amber-400 underline-offset-4" href="#">LinkedIn</a>
+<a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-amber-400 underline-offset-4" href="#">Contact Us</a>
+<a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-amber-400 underline-offset-4" href="#">Privacy Policy</a>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<h4 class="font-bold text-amber-400 text-lg">Contact</h4>
+<p class="text-slate-300">
+                     Maritime Academy Campus<br/>
+                     Building A, Student Center<br/>
+                     info@ikma-maritime.edu
+                 </p>
+</div>
+</div>
+</footer>
+</body></html>

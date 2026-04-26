@@ -17,6 +17,10 @@ const dirname = path.dirname(filename)
 export const Media: CollectionConfig = {
   slug: 'media',
   folders: true,
+  admin: {
+    description:
+      'Pusat semua file gambar/video untuk frontend dan konten admin. Gunakan koleksi ini untuk semua upload field.',
+  },
   access: {
     create: authenticated,
     delete: authenticated,
@@ -27,11 +31,16 @@ export const Media: CollectionConfig = {
     {
       name: 'alt',
       type: 'text',
-      //required: true,
+      admin: {
+        description: 'Teks alternatif gambar untuk aksesibilitas dan SEO.',
+      },
     },
     {
       name: 'caption',
       type: 'richText',
+      admin: {
+        description: 'Caption atau keterangan media. Opsional.',
+      },
       editor: lexicalEditor({
         features: ({ rootFeatures }) => {
           return [...rootFeatures, FixedToolbarFeature(), InlineToolbarFeature()]

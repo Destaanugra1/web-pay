@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IKMA - Login</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#dbe3ea",
+                        "surface-variant": "#e5e2e1",
+                        "on-secondary-container": "#745c00",
+                        "secondary-container": "#fed65b",
+                        "outline": "#737781",
+                        "surface-dim": "#dcd9d9",
+                        "surface-container-high": "#eae7e7",
+                        "on-background": "#1c1b1b",
+                        "on-tertiary-fixed": "#151d22",
+                        "on-secondary-fixed": "#241a00",
+                        "inverse-on-surface": "#f3f0ef",
+                        "secondary-fixed": "#ffe088",
+                        "secondary": "#735c00",
+                        "tertiary": "#232b30",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#0f4686",
+                        "primary-fixed": "#d6e3ff",
+                        "inverse-primary": "#a9c7ff",
+                        "inverse-surface": "#313030",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "outline-variant": "#c3c6d2",
+                        "tertiary-fixed-dim": "#bfc8ce",
+                        "on-tertiary-container": "#a5adb3",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#394146",
+                        "on-error": "#ffffff",
+                        "primary-container": "#003f7f",
+                        "surface-container": "#f0eded",
+                        "on-surface": "#1c1b1b",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#fcf9f8",
+                        "on-surface-variant": "#434750",
+                        "primary": "#002957",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-primary-fixed": "#001b3d",
+                        "background": "#fcf9f8",
+                        "on-primary-container": "#83acf3",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#315ea0",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f6f3f2",
+                        "surface-container-highest": "#e5e2e1",
+                        "on-tertiary-fixed-variant": "#40484d",
+                        "surface": "#fcf9f8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1200px",
+                        "md": "16px",
+                        "base": "8px",
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "xl": "48px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-caps": ["Inter"],
+                        "body": ["Inter"],
+                        "h3": ["Newsreader"],
+                        "h1": ["Newsreader"],
+                        "h2": ["Newsreader"]
+                    },
+                    "fontSize": {
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }],
+                        "body": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h2": ["36px", { "lineHeight": "1.25", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-primary-fixed min-h-screen flex items-center justify-center relative overflow-hidden font-body text-body text-on-surface">
+<!-- Decorative Background Image -->
+<div class="absolute inset-0 z-0 opacity-20 bg-cover bg-center" data-alt="Soft, muted aerial view of deep ocean waves with subtle sun glint, maritime mood, cool blue tones, professional nautical abstract" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_DEyqc2qsfDcx30NFpbAu2EUmfK0yhvKicUz6umslyvdv3yikC429mPxBeP9uUGfVv9-RHW-2ad3OoMK9bBvX-V6aOdYqenKOszDThTFR-MIPAFv2owdYjk7fx0ds2jkC4rWkY4VTxeQ9Pk9j5HkSiqkX4_oTygYj_nGsDha9ZpoNGZqMyPHlf_o7yJZ5I_q69L9LXobPvRBjP0JW6TvgTOlnWP_FdITEKRF_7ydybxH65ZBry2qDKIM3V5RbUTI2C_pkrejVRW4');"></div>
+<!-- Login Card -->
+<main class="w-full max-w-md bg-surface-container-lowest rounded-lg shadow-[0px_4px_12px_rgba(28,27,27,0.05)] border-t-[4px] border-primary z-10 mx-lg p-xl relative">
+<!-- Header -->
+<header class="text-center mb-xl">
+<div class="w-[80px] h-[80px] mx-auto rounded-full bg-primary-fixed flex items-center justify-center mb-lg">
+<span class="material-symbols-outlined text-h1 font-h1 text-primary">sailing</span>
+</div>
+<h1 class="font-h2 text-h2 text-primary mb-sm">IKMA</h1>
+<p class="font-body text-body text-on-surface-variant">Indonesian Kariman Maritime Association</p>
+</header>
+<!-- Form -->
+<form action="#" class="space-y-lg" method="POST">
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface block uppercase" for="email">Email Address</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-[20px]">mail</span>
+</div>
+<input class="w-full pl-xl pr-md py-[12px] bg-surface-container-lowest border border-outline rounded-DEFAULT text-on-surface placeholder:text-outline-variant focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors font-body text-body" id="email" name="email" placeholder="taruna@ikma.edu" required="" type="email"/>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="font-label-caps text-label-caps text-on-surface block uppercase" for="password">Password</label>
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-md flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline text-[20px]">lock</span>
+</div>
+<input class="w-full pl-xl pr-md py-[12px] bg-surface-container-lowest border border-outline rounded-DEFAULT text-on-surface placeholder:text-outline-variant focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition-colors font-body text-body" id="password" name="password" placeholder="••••••••" required="" type="password"/>
+</div>
+<div class="flex justify-end pt-xs">
+<a class="font-body text-[14px] text-primary hover:text-secondary transition-colors underline-offset-4 hover:underline" href="#">Lupa Password?</a>
+</div>
+</div>
+<button class="w-full bg-secondary-container hover:bg-secondary-fixed text-primary font-body text-body font-semibold py-[14px] rounded-DEFAULT shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-center gap-sm" type="submit">
+<span>Sign In</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</form>
+<!-- Divider -->
+<div class="relative my-xl">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-surface-variant"></div>
+</div>
+<div class="relative flex justify-center text-sm">
+<span class="px-md bg-surface-container-lowest text-on-surface-variant font-body text-[14px]">Atau login dengan</span>
+</div>
+</div>
+<!-- Social Login -->
+<div class="grid grid-cols-2 gap-md">
+<button class="flex items-center justify-center gap-base w-full bg-surface-container-low hover:bg-surface-container py-[10px] rounded-DEFAULT border border-surface-variant transition-colors text-on-surface font-body text-[14px] font-medium" type="button">
+<span class="material-symbols-outlined text-[18px]">domain</span>
+                Institusi
+            </button>
+<button class="flex items-center justify-center gap-base w-full bg-surface-container-low hover:bg-surface-container py-[10px] rounded-DEFAULT border border-surface-variant transition-colors text-on-surface font-body text-[14px] font-medium" type="button">
+<span class="material-symbols-outlined text-[18px]">public</span>
+                SSO
+            </button>
+</div>
+<!-- Footer Note -->
+<div class="mt-xl text-center">
+<p class="font-body text-[12px] text-on-surface-variant">
+                Belum memiliki akses? <a class="text-primary font-semibold hover:underline" href="#">Hubungi Administrator</a>
+</p>
+</div>
+</main>
+</body></html>

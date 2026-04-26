@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Struktur Organisasi - IKMA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,500;6..72,600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#dbe3ea",
+                        "surface-container-low": "#f6f3f2",
+                        "tertiary-container": "#394146",
+                        "secondary-fixed": "#ffe088",
+                        "on-primary-fixed-variant": "#0f4686",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#232b30",
+                        "background": "#fcf9f8",
+                        "surface-bright": "#fcf9f8",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1c1b1b",
+                        "on-secondary-fixed-variant": "#574500",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#fed65b",
+                        "tertiary-fixed-dim": "#bfc8ce",
+                        "primary-fixed-dim": "#a9c7ff",
+                        "on-secondary-fixed": "#241a00",
+                        "outline": "#737781",
+                        "on-secondary-container": "#745c00",
+                        "on-primary-fixed": "#001b3d",
+                        "on-tertiary-fixed-variant": "#40484d",
+                        "outline-variant": "#c3c6d2",
+                        "inverse-primary": "#a9c7ff",
+                        "surface-dim": "#dcd9d9",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e5e2e1",
+                        "primary-fixed": "#d6e3ff",
+                        "on-background": "#1c1b1b",
+                        "secondary-fixed-dim": "#e9c349",
+                        "error": "#ba1a1a",
+                        "primary-container": "#003f7f",
+                        "surface-container": "#f0eded",
+                        "surface-tint": "#315ea0",
+                        "secondary": "#735c00",
+                        "on-tertiary-container": "#a5adb3",
+                        "inverse-surface": "#313030",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed": "#151d22",
+                        "surface-container-highest": "#e5e2e1",
+                        "surface-container-high": "#eae7e7",
+                        "on-surface-variant": "#434750",
+                        "surface": "#fcf9f8",
+                        "primary": "#002957",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-primary-container": "#83acf3",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "md": "16px",
+                        "xl": "48px"
+                    },
+                    "fontFamily": {
+                        "h1": ["Newsreader", "serif"],
+                        "h2": ["Newsreader", "serif"],
+                        "body": ["Inter", "sans-serif"],
+                        "h3": ["Newsreader", "serif"],
+                        "label-caps": ["Inter", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "h1": ["48px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "h2": ["36px", { "lineHeight": "1.25", "fontWeight": "600" }],
+                        "body": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "h3": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "label-caps": ["12px", { "lineHeight": "1", "letterSpacing": "0.1em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body text-body antialiased min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 w-full z-50 bg-[#003F7F] dark:bg-slate-950 border-b border-blue-800 dark:border-slate-800 shadow-lg">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 h-20">
+<div class="text-2xl font-bold text-white uppercase tracking-wider">
+                IKMA
+            </div>
+<!-- Web Navigation -->
+<nav class="hidden md:flex gap-6 items-center font-newsreader tracking-tight">
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">HOME</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">BERITA</a>
+<a class="text-amber-400 border-b-2 border-amber-400 pb-1 font-semibold hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">STRUKTUR ORG</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">FOTO BPH</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">DAFTAR KADER</a>
+<a class="text-white hover:text-amber-400 transition-colors duration-200 font-medium hover:scale-105 transition-transform cursor-pointer active:opacity-80 transition-all" href="#">ABSEN</a>
+</nav>
+<!-- Mobile Menu Button (Functional but no JS per rules, just visual) -->
+<button class="md:hidden text-white hover:text-amber-400 transition-colors duration-200">
+<span class="material-symbols-outlined" style="font-size: 28px;">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow w-full max-w-container-max mx-auto px-gutter py-xl">
+<!-- Page Header -->
+<div class="text-center mb-xl">
+<h1 class="font-h1 text-h1 text-primary mb-sm">Struktur Organisasi</h1>
+<p class="font-body text-body text-on-surface-variant max-w-2xl mx-auto">
+                Mengenal lebih dekat susunan Badan Pengurus Harian dan jajaran Divisi Ikatan Keluarga Mahasiswa (IKMA) periode ini.
+            </p>
+</div>
+<!-- Organizational Chart (Tree Diagram) -->
+<div class="relative w-full overflow-x-auto pb-xl mb-xl border-b border-outline-variant flex flex-col items-center">
+<!-- Level 1: Ketua Umum -->
+<div class="relative z-10 bg-primary text-on-primary px-lg py-md rounded-lg shadow-md w-64 text-center border-t-[4px] border-secondary mb-xl">
+<h3 class="font-body font-semibold text-[18px] mb-xs text-secondary-fixed">Budi Santoso</h3>
+<p class="font-label-caps text-label-caps text-primary-fixed-dim uppercase tracking-wider">Ketua Umum</p>
+</div>
+<!-- Vertical Line connecting Level 1 to Horizontal Line -->
+<div class="absolute w-[2px] bg-secondary h-xl top-[88px] z-0"></div>
+<!-- Horizontal Line connecting branches -->
+<div class="absolute w-[80%] max-w-3xl h-[2px] bg-secondary top-[136px] z-0 hidden md:block"></div>
+<!-- Small Vertical Lines from Horizontal Line to Level 2 (Desktop) -->
+<div class="absolute w-[2px] bg-secondary h-lg top-[136px] left-[10%] z-0 hidden md:block"></div>
+<div class="absolute w-[2px] bg-secondary h-lg top-[136px] right-[10%] z-0 hidden md:block"></div>
+<div class="absolute w-[2px] bg-secondary h-lg top-[136px] left-1/2 z-0 hidden md:block"></div>
+<!-- Level 2: Sekretaris, Wakil, Bendahara -->
+<div class="flex flex-col md:flex-row gap-gutter md:gap-0 justify-between w-full max-w-4xl relative z-10 pt-lg md:pt-0">
+<!-- Sekretaris -->
+<div class="flex flex-col items-center">
+<div class="hidden md:block w-[2px] bg-secondary h-lg mb-0"></div> <!-- Desktop connector space -->
+<div class="md:hidden w-[2px] bg-secondary h-lg -mt-lg mb-0 mx-auto"></div> <!-- Mobile connector -->
+<div class="bg-primary text-on-primary px-md py-sm rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.1)] w-56 text-center border-t-[4px] border-secondary">
+<h3 class="font-body font-semibold text-[16px] mb-xs">Aulia Rahma</h3>
+<p class="font-label-caps text-label-caps text-primary-fixed-dim uppercase">Sekretaris Umum</p>
+</div>
+</div>
+<!-- Wakil Ketua (Center) -->
+<div class="flex flex-col items-center">
+<div class="hidden md:block w-[2px] h-lg mb-0"></div> <!-- Spacer for center alignment -->
+<div class="md:hidden w-[2px] bg-secondary h-lg mb-0 mx-auto"></div> <!-- Mobile connector -->
+<div class="bg-primary text-on-primary px-md py-sm rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.1)] w-56 text-center border-t-[4px] border-secondary">
+<h3 class="font-body font-semibold text-[16px] mb-xs">Dimas Pratama</h3>
+<p class="font-label-caps text-label-caps text-primary-fixed-dim uppercase">Wakil Ketua Umum</p>
+</div>
+</div>
+<!-- Bendahara -->
+<div class="flex flex-col items-center">
+<div class="hidden md:block w-[2px] bg-secondary h-lg mb-0"></div> <!-- Desktop connector space -->
+<div class="md:hidden w-[2px] bg-secondary h-lg mb-0 mx-auto"></div> <!-- Mobile connector -->
+<div class="bg-primary text-on-primary px-md py-sm rounded-lg shadow-[0_4px_12px_rgba(28,27,27,0.1)] w-56 text-center border-t-[4px] border-secondary">
+<h3 class="font-body font-semibold text-[16px] mb-xs">Siti Nurhaliza</h3>
+<p class="font-label-caps text-label-caps text-primary-fixed-dim uppercase">Bendahara Umum</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Division Cards Section -->
+<div class="mb-xl text-center">
+<h2 class="font-h2 text-h2 text-primary mb-sm inline-flex items-center gap-sm justify-center">
+<span class="material-symbols-outlined text-secondary" style="font-size: 32px; font-variation-settings: 'FILL' 1;">directions_boat</span>
+                Jajaran Divisi
+                <span class="material-symbols-outlined text-secondary" style="font-size: 32px; font-variation-settings: 'FILL' 1;">directions_boat</span>
+</h2>
+</div>
+<!-- Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1: PSDM -->
+<div class="bg-primary-fixed rounded-lg border-t-[4px] border-secondary shadow-[0_4px_12px_rgba(28,27,27,0.05)] p-lg flex flex-col h-full transition-transform hover:-translate-y-1 duration-300">
+<h3 class="font-h3 text-h3 text-primary border-b border-primary-fixed-dim pb-sm mb-md">Divisi PSDM</h3>
+<!-- Division Head -->
+<div class="flex items-center gap-sm mb-md">
+<div class="w-16 h-16 rounded-full border-[2px] border-secondary overflow-hidden flex-shrink-0 bg-surface">
+<img alt="Head of PSDM" class="w-full h-full object-cover" data-alt="Portrait of a young Asian male student with glasses wearing a dark blazer over a white shirt, professional friendly expression, soft office lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBJRSI8_E4pSznCMT34j1sGzniLYEDXwU7OmU4SxwuBLei3bHAOfqIRjdWXfm3pG3haIRM_omWvU9TLJdVME92QV_plF-z7Tc4hSoNiJOTCTxSPnfbbcqRzIk09h_sXjKJ1rhpI76ICdf2hTkzgdNdxLrI-OyKfEQhAue0e_UQL5iQst0HyJKwjUznYlTMls17D2d2o8dBn8rkymhs5jjFEZzttT284shAFrabJ6TvJiJyKD_Nhjg33L1i35BXt5k7ulmomkTZ60o"/>
+</div>
+<div>
+<p class="font-body font-semibold text-primary">Rizky Ananda</p>
+<p class="text-sm text-on-primary-fixed-variant">Kepala Divisi</p>
+</div>
+</div>
+<!-- Members List -->
+<div class="mt-auto">
+<p class="font-label-caps text-label-caps text-outline uppercase mb-xs tracking-widest">Anggota Divisi</p>
+<ul class="space-y-xs text-body text-on-primary-fixed">
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Fajar Ramadhan
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Dwi Lestari
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Iqbal Saputra
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Anisa Fitri
+                        </li>
+</ul>
+</div>
+</div>
+<!-- Card 2: Humas -->
+<div class="bg-primary-fixed rounded-lg border-t-[4px] border-secondary shadow-[0_4px_12px_rgba(28,27,27,0.05)] p-lg flex flex-col h-full transition-transform hover:-translate-y-1 duration-300">
+<h3 class="font-h3 text-h3 text-primary border-b border-primary-fixed-dim pb-sm mb-md">Divisi Humas</h3>
+<!-- Division Head -->
+<div class="flex items-center gap-sm mb-md">
+<div class="w-16 h-16 rounded-full border-[2px] border-secondary overflow-hidden flex-shrink-0 bg-surface">
+<img alt="Head of Humas" class="w-full h-full object-cover" data-alt="Portrait of a young Asian female student with a slight smile, wearing a neat light blue blouse, blurred natural background, bright daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW5_nkxphGICcG7YNZFYioLOtlp8X_QCkXuJsfyWy1IW9wddmhYqujRTB5J63_8gY-YkteVmcFsBA_E3WKPeeDa8ETsRmBtoxNh5uygPTdBLtztfMVNSEFPS6NPXDjJUczGX4DzPz6EV9td4pg9BUbrZo28SPqMkrBaEzUZnrNdg1fL_3U_iIM8xAyyMdVnISXCAdvovAxgx-0NIAmigdLp98wUzxtiyVK0e_FhJcFsuyLRjD8TesE2RXr7_ZtPFGsB0M8OC4hXzI"/>
+</div>
+<div>
+<p class="font-body font-semibold text-primary">Nadia Permata</p>
+<p class="text-sm text-on-primary-fixed-variant">Kepala Divisi</p>
+</div>
+</div>
+<!-- Members List -->
+<div class="mt-auto">
+<p class="font-label-caps text-label-caps text-outline uppercase mb-xs tracking-widest">Anggota Divisi</p>
+<ul class="space-y-xs text-body text-on-primary-fixed">
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Gilang Perdana
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Rina Agustina
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Bayu Aji
+                        </li>
+</ul>
+</div>
+</div>
+<!-- Card 3: Keilmuan -->
+<div class="bg-primary-fixed rounded-lg border-t-[4px] border-secondary shadow-[0_4px_12px_rgba(28,27,27,0.05)] p-lg flex flex-col h-full transition-transform hover:-translate-y-1 duration-300">
+<h3 class="font-h3 text-h3 text-primary border-b border-primary-fixed-dim pb-sm mb-md">Divisi Keilmuan</h3>
+<!-- Division Head -->
+<div class="flex items-center gap-sm mb-md">
+<div class="w-16 h-16 rounded-full border-[2px] border-secondary overflow-hidden flex-shrink-0 bg-surface">
+<img alt="Head of Keilmuan" class="w-full h-full object-cover" data-alt="Portrait of a young Asian male student with a serious expression, wearing a navy blue collared shirt, indoor academic setting, soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYUEi1Bg6ddRGFw_x4twyZHhtTnBZs2d2RFlfqT4RFmcMPs9E8k-jCr9WUxOpn9bL5uu_1D8Oo1cpQbUD_E3XYbAx_ZBL3NfcGpriwzbFOuD5oCQxri61oYffhGjOPAD8Fxjti9R4iN5LBZht4PH0RodkNwkWN4ERFspqGY9MW5nzFMF4hbkAkBVcdmlJ0dD5gjlo8ADUhPrz1pTVf0xLzqJLM-uEH3lqtFtmKVv0tVOE7DJtdLifDHBO-XwH5Fao9ysXdOzBiqFk"/>
+</div>
+<div>
+<p class="font-body font-semibold text-primary">Arif Rachman</p>
+<p class="text-sm text-on-primary-fixed-variant">Kepala Divisi</p>
+</div>
+</div>
+<!-- Members List -->
+<div class="mt-auto">
+<p class="font-label-caps text-label-caps text-outline uppercase mb-xs tracking-widest">Anggota Divisi</p>
+<ul class="space-y-xs text-body text-on-primary-fixed">
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Sandiaga Yuda
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Putri Amelia
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Kevin Setiawan
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Dina Mariana
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Baskoro Edi
+                        </li>
+</ul>
+</div>
+</div>
+<!-- Card 4: Minat Bakat -->
+<div class="bg-primary-fixed rounded-lg border-t-[4px] border-secondary shadow-[0_4px_12px_rgba(28,27,27,0.05)] p-lg flex flex-col h-full transition-transform hover:-translate-y-1 duration-300">
+<h3 class="font-h3 text-h3 text-primary border-b border-primary-fixed-dim pb-sm mb-md">Divisi Minat Bakat</h3>
+<!-- Division Head -->
+<div class="flex items-center gap-sm mb-md">
+<div class="w-16 h-16 rounded-full border-[2px] border-secondary overflow-hidden flex-shrink-0 bg-surface">
+<img alt="Head of Minat Bakat" class="w-full h-full object-cover" data-alt="Portrait of an energetic young Asian female student with curly hair, wearing a casual yellow sweater, smiling broadly, sunny outdoor background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBPAlVcXCjPjiXtpy2AsL9uh9x-T1vDSi-nCMDCw47MnSHQuwZSPZNRv_5XHFUobkVDxHWV4ezjH59Nw0xt_A7sR0kT9eUb0W74_UCTDc-WxG5J_7mczycJLaeREwyghNuiW2Y1Rquyqqx2UWQYwePWFDsT3o0Z0ptNmKgsPNoiKVTnYLo1N2HcjrHEssotoJjxGV8oPl58e2_gxngXkj5vTU0_FtyOWw0WFNT2ZXOWnMOdo45-iSShFAdaheg7kUiyuhGdmJELs8"/>
+</div>
+<div>
+<p class="font-body font-semibold text-primary">Citra Kirana</p>
+<p class="text-sm text-on-primary-fixed-variant">Kepala Divisi</p>
+</div>
+</div>
+<!-- Members List -->
+<div class="mt-auto">
+<p class="font-label-caps text-label-caps text-outline uppercase mb-xs tracking-widest">Anggota Divisi</p>
+<ul class="space-y-xs text-body text-on-primary-fixed">
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Rafi Ahmad
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Syifa Hadju
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Tegar Septian
+                        </li>
+</ul>
+</div>
+</div>
+<!-- Card 5: Kewirausahaan -->
+<div class="bg-primary-fixed rounded-lg border-t-[4px] border-secondary shadow-[0_4px_12px_rgba(28,27,27,0.05)] p-lg flex flex-col h-full transition-transform hover:-translate-y-1 duration-300">
+<h3 class="font-h3 text-h3 text-primary border-b border-primary-fixed-dim pb-sm mb-md">Divisi Kewirausahaan</h3>
+<!-- Division Head -->
+<div class="flex items-center gap-sm mb-md">
+<div class="w-16 h-16 rounded-full border-[2px] border-secondary overflow-hidden flex-shrink-0 bg-surface">
+<img alt="Head of Kewirausahaan" class="w-full h-full object-cover" data-alt="Portrait of a young male student in a business casual setting, wearing a light grey shirt, looking confident, modern office backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBETWCjI7icE9m7fWwAfFTPlG20vFI6ztfYPLL5y-CBMicSpTGoZkMAVPgxW_EMKjq7zrSwk8hEey6KphMse4rFJfcz2aMH85J4JMYBIiZenpkzVW9GZldnRtjPUCq4rv3qYrhM71kSKWT0eBAmTHu0quyYvoF0g8sHqJevLd6F_5tHaRPEq3uyqGvP_UOobjzkjXy4xN411zuMTL1070k0182cLf3X9cDcEFsDkQqc5Wevj8LQ_jHSutlH6Tb5_pa8Fb28VMkM1bo"/>
+</div>
+<div>
+<p class="font-body font-semibold text-primary">Tito Karnavian</p>
+<p class="text-sm text-on-primary-fixed-variant">Kepala Divisi</p>
+</div>
+</div>
+<!-- Members List -->
+<div class="mt-auto">
+<p class="font-label-caps text-label-caps text-outline uppercase mb-xs tracking-widest">Anggota Divisi</p>
+<ul class="space-y-xs text-body text-on-primary-fixed">
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Nina Zatulini
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Fandy Christian
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Larasati Putri
+                        </li>
+<li class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary" style="font-size: 16px;">arrow_right</span>
+                            Reza Rahardian
+                        </li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-[#003F7F] dark:bg-slate-950 border-t-4 border-amber-500">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-7xl mx-auto px-8 py-16">
+<!-- Brand & Copyright -->
+<div class="flex flex-col gap-4">
+<div class="text-xl font-black text-amber-400 font-newsreader">
+                    IKMA
+                </div>
+<p class="font-newsreader text-sm leading-relaxed text-white dark:text-slate-200">
+                    © 2024 Ikatan Keluarga Mahasiswa (IKMA). Institutional Excellence &amp; Maritime Heritage.
+                </p>
+</div>
+<!-- Links Column 1 -->
+<div class="flex flex-col gap-3 font-newsreader text-sm leading-relaxed">
+<a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-amber-400 underline-offset-4 transition-all duration-300" href="#">Instagram</a>
+<a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-amber-400 underline-offset-4 transition-all duration-300" href="#">LinkedIn</a>
+</div>
+<!-- Links Column 2 -->
+<div class="flex flex-col gap-3 font-newsreader text-sm leading-relaxed">
+<a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-amber-400 underline-offset-4 transition-all duration-300" href="#">Contact Us</a>
+<a class="text-slate-300 hover:text-white transition-colors hover:underline decoration-amber-400 underline-offset-4 transition-all duration-300" href="#">Privacy Policy</a>
+</div>
+</div>
+</footer>
+</body></html>
