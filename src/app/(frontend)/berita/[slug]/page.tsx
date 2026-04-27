@@ -46,7 +46,28 @@ export default async function BeritaDetailPage({ params: paramsPromise }: Args) 
   }
 
   if (isEnabled) {
-    return <BeritaDetailPreview newsPage={newsPage} post={post} />
+    return (
+      <>
+        {/* Banner peringatan mode pratinjau */}
+        <div className="fixed bottom-0 left-0 right-0 z-50 flex items-center justify-between gap-4 bg-[#002957] px-6 py-3 text-white shadow-lg">
+          <div className="flex items-center gap-3">
+            <span className="inline-block size-2 animate-pulse rounded-full bg-[#fed65b]" />
+            <span className="text-sm font-medium">
+              Mode Pratinjau Aktif — Anda melihat konten draft yang belum dipublish.
+            </span>
+          </div>
+          <a
+            href="/next/exit-preview"
+            className="rounded-md bg-[#fed65b] px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-[#745c00] transition hover:bg-[#ffe088]"
+          >
+            Keluar Pratinjau
+          </a>
+        </div>
+        <div className="pb-14">
+          <BeritaDetailPreview newsPage={newsPage} post={post} />
+        </div>
+      </>
+    )
   }
 
   return <BeritaDetailContent newsPage={newsPage} post={post} />

@@ -61,6 +61,15 @@ export const HomePage: GlobalConfig = {
       },
     },
     {
+      name: 'heroBackgroundImage',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description:
+          'Gambar latar belakang (background) transparan untuk banner utama beranda. Jika kosong, akan memakai warna biru solid.',
+      },
+    },
+    {
       admin: {
         description: 'Judul besar utama di halaman home.',
       },

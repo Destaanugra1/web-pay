@@ -28,6 +28,15 @@ export const NewsPage: GlobalConfig = {
       },
     },
     {
+      name: 'bannerBackgroundImage',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description:
+          'Gambar background transparan untuk banner halaman berita. Jika kosong, banner memakai warna biru solid.',
+      },
+    },
+    {
       admin: {
         description: 'Judul hero di halaman berita.',
       },

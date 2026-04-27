@@ -10,6 +10,7 @@ export function PendaftaranPageContent({ registrationPage }: { registrationPage:
   return (
     <>
       <PageHero
+        image={registrationPage.bannerBackgroundImage}
         badge={
           typeof registrationPage.heroImage === 'object' && registrationPage.heroImage?.url ? (
             <div className="size-20 overflow-hidden rounded-full border-2 border-[#fed65b] bg-white shadow-xl">

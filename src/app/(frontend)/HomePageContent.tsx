@@ -47,6 +47,8 @@ export function HomePageContent({
   return (
     <>
       <PageHero
+        size="home"
+        image={homePage.heroBackgroundImage}
         badge={
           typeof homePage.heroImage === 'object' && homePage.heroImage?.url ? (
             <div className="size-28 overflow-hidden rounded-full border-4 border-[#fed65b] bg-white shadow-xl">
@@ -186,40 +188,53 @@ export function HomePageContent({
             <div className="grid gap-6 md:grid-cols-3">
               <Link
                 href={`/berita/${featuredPost.slug}`}
-                className="group relative min-h-[22rem] overflow-hidden rounded-xl border-t-4 border-[#fed65b] bg-[linear-gradient(135deg,#002957_0%,#315ea0_100%)] p-8 text-white shadow-md md:col-span-2"
+                className="group relative min-h-[26rem] overflow-hidden rounded-xl shadow-md md:col-span-2"
               >
-                <div className="absolute inset-0 opacity-20">
-                  <PostMedia post={featuredPost} className="h-full w-full object-cover" />
+                {/* Full cover image */}
+                <div className="absolute inset-0">
+                  <PostMedia post={featuredPost} className="h-full w-full" />
                 </div>
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.14),transparent_35%)]" />
-                <div className="relative flex h-full flex-col justify-end">
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                {/* Content */}
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
                   {getCategory(featuredPost) && (
-                    <span className="mb-4 w-fit rounded-full bg-[#fed65b] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#745c00]">
+                    <span className="mb-3 inline-block rounded-full bg-[#fed65b] px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#745c00]">
                       {getCategory(featuredPost)}
                     </span>
                   )}
-                  <h3 className="max-w-xl text-3xl font-semibold">{featuredPost.title}</h3>
-                  {featuredPost.meta?.description && (
-                    <p className="mt-3 max-w-lg text-sm leading-7 text-[#d6e3ff]">
-                      {featuredPost.meta.description}
+                  <h3 className="max-w-xl text-2xl font-semibold leading-snug text-white md:text-3xl">{featuredPost.title}</h3>
+                  {(featuredPost.excerpt || featuredPost.meta?.description) && (
+                    <p className="mt-2 max-w-lg text-sm leading-7 text-white/80 line-clamp-2">
+                      {featuredPost.excerpt || featuredPost.meta?.description}
                     </p>
                   )}
+                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-[#fed65b]">
+                    Baca Selengkapnya <ArrowRight className="size-3" />
+                  </span>
                 </div>
               </Link>
-              <div className="space-y-6">
+              <div className="space-y-4">
                 {sidePosts.map((post) => (
-                  <Link key={post.id} href={`/berita/${post.slug}`}>
-                    <MaritimePanel className="border-t-4 border-[#003f7f] p-5">
-                      <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#003f7f]">
-                        {getCategory(post)}
-                      </span>
-                      <h3 className="mt-3 text-xl font-semibold text-[#1c1b1b]">{post.title}</h3>
-                      {post.meta?.description && (
-                        <p className="mt-2 text-sm leading-6 text-[#434750]">
-                          {post.meta.description}
-                        </p>
-                      )}
-                    </MaritimePanel>
+                  <Link key={post.id} href={`/berita/${post.slug}`} className="group block">
+                    <div className="flex gap-4 rounded-xl border border-[#c3c6d2] bg-white p-4 shadow-sm transition hover:shadow-md">
+                      <div className="size-20 shrink-0 overflow-hidden rounded-lg">
+                        <PostMedia post={post} className="h-full w-full object-cover" />
+                      </div>
+                      <div className="min-w-0 space-y-1">
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#003f7f]">
+                          {getCategory(post)}
+                        </span>
+                        <h3 className="line-clamp-2 text-sm font-semibold text-[#1c1b1b] transition group-hover:text-[#003f7f]">
+                          {post.title}
+                        </h3>
+                        {(post.excerpt || post.meta?.description) && (
+                          <p className="line-clamp-2 text-xs leading-5 text-[#737781]">
+                            {post.excerpt || post.meta?.description}
+                          </p>
+                        )}
+                      </div>
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -284,7 +299,7 @@ function PostMedia({ post, className }: { post: Post; className: string }) {
   const image = post.heroImage || post.meta?.image
 
   if (image && typeof image === 'object') {
-    return <Media resource={image} className={className} />
+    return <Media resource={image} className={className} imgClassName="object-cover w-full h-full" />
   }
 
   return <div className={`${className} bg-[linear-gradient(135deg,#d6e3ff_0%,#315ea0_50%,#002957_100%)]`} />

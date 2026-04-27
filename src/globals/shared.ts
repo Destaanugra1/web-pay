@@ -28,5 +28,5 @@ export const getGlobalLivePreviewURL = ({
   req: PayloadRequest
   slug: keyof typeof globalRouteMap
 }) => {
-  return `${getServerSideURL()}${globalRouteMap[slug]}`
+  return `${getServerSideURL()}${getGlobalPreviewPath(slug)}`
 }

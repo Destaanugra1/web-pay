@@ -2,8 +2,9 @@ import { Media } from '@/components/Media'
 import { MaritimeEmptyState, MaritimePanel } from '@/components/maritime/site'
 import RichText from '@/components/RichText'
 import type { Post } from '@/payload-types'
-import { CalendarDays, Share2, TrendingUp } from 'lucide-react'
+import { CalendarDays, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
+import { ShareButtons } from './ShareButtons'
 
 export function BeritaDetailContent({
   newsPage,
@@ -30,9 +31,9 @@ export function BeritaDetailContent({
               <h1 className="mt-6 text-5xl font-semibold leading-tight text-[#1c1b1b]">
                 {post.title}
               </h1>
-              {post.meta?.description && (
+              {(post.excerpt || post.meta?.description) && (
                 <p className="mt-4 max-w-3xl text-base leading-8 text-[#434750]">
-                  {post.meta.description}
+                  {post.excerpt || post.meta?.description}
                 </p>
               )}
             </div>
@@ -82,19 +83,11 @@ export function BeritaDetailContent({
               )}
             </div>
           </MaritimePanel>
-          {(newsPage.detail?.shareTitle || newsPage.detail?.shareDescription) && (
-            <MaritimePanel className="bg-[#003f7f] p-6 text-center text-white">
-              <Share2 className="mx-auto size-8 text-[#fed65b]" />
-              {newsPage.detail?.shareTitle && (
-                <h2 className="mt-4 text-2xl font-semibold">{newsPage.detail.shareTitle}</h2>
-              )}
-              {newsPage.detail?.shareDescription && (
-                <p className="mt-2 text-sm leading-6 text-[#d6e3ff]">
-                  {newsPage.detail.shareDescription}
-                </p>
-              )}
-            </MaritimePanel>
-          )}
+          <ShareButtons
+            title={post.title}
+            shareTitle={newsPage.detail?.shareTitle}
+            shareDescription={newsPage.detail?.shareDescription}
+          />
         </aside>
       </div>
     </article>
@@ -126,12 +119,15 @@ function getCategory(post: Post) {
   return typeof category === 'object' && category?.title ? category.title : ''
 }
 
-function formatDate(value: string) {
+function formatDate(value: string | null | undefined) {
+  if (!value) return '—'
+  const date = new Date(value)
+  if (isNaN(date.getTime())) return '—'
   return new Intl.DateTimeFormat('id-ID', {
     day: 'numeric',
     month: 'long',
     year: 'numeric',
-  }).format(new Date(value))
+  }).format(date)
 }
 
 function isPost(value: number | Post): value is Post {

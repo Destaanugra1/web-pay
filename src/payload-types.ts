@@ -72,6 +72,8 @@ export interface Config {
     media: Media;
     categories: Category;
     users: User;
+    acara: Acara;
+    absensi: Absensi;
     redirects: Redirect;
     forms: Form;
     'form-submissions': FormSubmission;
@@ -94,6 +96,8 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     categories: CategoriesSelect<false> | CategoriesSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    acara: AcaraSelect<false> | AcaraSelect<true>;
+    absensi: AbsensiSelect<false> | AbsensiSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     'form-submissions': FormSubmissionsSelect<false> | FormSubmissionsSelect<true>;
@@ -166,56 +170,29 @@ export interface UserAuthOperations {
   };
 }
 /**
+ * Halaman statis utama untuk membangun struktur website Anda.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
 export interface Page {
   id: number;
+  /**
+   * Masukkan judul utama halaman.
+   */
   title: string;
-  hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
-    richText?: {
-      root: {
-        type: string;
-        children: {
-          type: any;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-    links?:
-      | {
-          link: {
-            type?: ('reference' | 'custom') | null;
-            newTab?: boolean | null;
-            reference?:
-              | ({
-                  relationTo: 'pages';
-                  value: number | Page;
-                } | null)
-              | ({
-                  relationTo: 'posts';
-                  value: number | Post;
-                } | null);
-            url?: string | null;
-            label: string;
-            /**
-             * Choose how the link should be rendered.
-             */
-            appearance?: ('default' | 'outline') | null;
-          };
-          id?: string | null;
-        }[]
-      | null;
-    media?: (number | null) | Media;
-  };
+  /**
+   * Tambahkan blok-blok untuk menyusun isi halaman.
+   */
   layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  /**
+   * Teks deskripsi pendek yang muncul di bawah judul pada banner atas halaman.
+   */
+  bannerDescription?: string | null;
+  /**
+   * Unggah gambar untuk dijadikan background transparan pada banner atas halaman.
+   */
+  featuredImage?: (number | null) | Media;
   meta?: {
     title?: string | null;
     /**
@@ -235,6 +212,54 @@ export interface Page {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CallToActionBlock".
+ */
+export interface CallToActionBlock {
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'cta';
+}
+/**
  * Koleksi berita/artikel publik. Digunakan oleh halaman /berita dan /berita/[slug].
  *
  * This interface was referenced by `Config`'s JSON-Schema
@@ -242,13 +267,20 @@ export interface Page {
  */
 export interface Post {
   id: number;
+  /**
+   * Judul berita atau artikel. Akan tampil di banner halaman detail dan listing berita.
+   */
   title: string;
   /**
-   * Gambar utama artikel. Dipakai pada kartu berita dan hero detail berita.
+   * Ringkasan singkat artikel (1–3 kalimat). Ditampilkan di halaman listing berita dan kartu artikel. Jika dikosongkan, sistem akan memakai deskripsi SEO.
    */
-  heroImage?: (number | null) | Media;
+  excerpt?: string | null;
   /**
-   * Isi lengkap artikel berita.
+   * Pilih satu atau lebih kategori untuk artikel ini. Kategori muncul sebagai label/tag di daftar dan detail berita.
+   */
+  categories?: (number | Category)[] | null;
+  /**
+   * Tulis isi lengkap artikel berita di sini. Gunakan toolbar di atas untuk heading, bold, italic, dan menyisipkan gambar atau blok khusus.
    */
   content: {
     root: {
@@ -265,8 +297,14 @@ export interface Post {
     };
     [k: string]: unknown;
   };
+  /**
+   * Gambar sampul utama artikel. Ditampilkan sebagai background besar di halaman detail berita dan thumbnail di listing berita. Disarankan rasio 16:9 (mis. 1280×720px).
+   */
+  heroImage?: (number | null) | Media;
+  /**
+   * Pilih artikel lain yang berkaitan dengan artikel ini. Akan ditampilkan di bagian bawah halaman detail sebagai rekomendasi bagi pembaca.
+   */
   relatedPosts?: (number | Post)[] | null;
-  categories?: (number | Category)[] | null;
   meta?: {
     title?: string | null;
     /**
@@ -275,7 +313,13 @@ export interface Post {
     image?: (number | null) | Media;
     description?: string | null;
   };
+  /**
+   * Tanggal dan waktu publikasi artikel.
+   */
   publishedAt?: string | null;
+  /**
+   * Pilih penulis artikel ini.
+   */
   authors?: (number | User)[] | null;
   populatedAuthors?:
     | {
@@ -291,6 +335,39 @@ export interface Post {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * Kategori untuk mengelompokkan artikel/postingan.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "categories".
+ */
+export interface Category {
+  id: number;
+  /**
+   * Masukkan nama kategori baru.
+   */
+  title: string;
+  /**
+   * Unggah gambar ikon atau cover kategori di sini.
+   */
+  image?: (number | null) | Media;
+  /**
+   * When enabled, the slug will auto-generate from the title field on save and autosave.
+   */
+  generateSlug?: boolean | null;
+  slug: string;
+  parent?: (number | null) | Category;
+  breadcrumbs?:
+    | {
+        doc?: (number | null) | Category;
+        url?: string | null;
+        label?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * Pusat semua file gambar/video untuk frontend dan konten admin. Gunakan koleksi ini untuk semua upload field.
@@ -420,36 +497,21 @@ export interface FolderInterface {
   createdAt: string;
 }
 /**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: number;
-  title: string;
-  /**
-   * When enabled, the slug will auto-generate from the title field on save and autosave.
-   */
-  generateSlug?: boolean | null;
-  slug: string;
-  parent?: (number | null) | Category;
-  breadcrumbs?:
-    | {
-        doc?: (number | null) | Category;
-        url?: string | null;
-        label?: string | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
+ * Manajemen akun pengguna dan profil admin.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
   id: number;
+  /**
+   * Masukkan nama lengkap pengguna.
+   */
   name?: string | null;
+  /**
+   * Unggah foto profil pengguna di sini.
+   */
+  profilePicture?: (number | null) | Media;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -468,54 +530,6 @@ export interface User {
     | null;
   password?: string | null;
   collection: 'users';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CallToActionBlock".
- */
-export interface CallToActionBlock {
-  richText?: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
-  links?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'cta';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -813,6 +827,70 @@ export interface Form {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "acara".
+ */
+export interface Acara {
+  id: number;
+  title: string;
+  tanggal: string;
+  kategori: 'internal' | 'eksternal';
+  /**
+   * Ubah menjadi "Tutup" untuk menghentikan form absensi di website.
+   */
+  status: 'buka' | 'tutup';
+  deskripsi?: string | null;
+  /**
+   * Kosongkan untuk menggunakan Nama Acara sebagai judul form.
+   */
+  formTitle?: string | null;
+  /**
+   * Teks instruksi di bawah judul form. Kosongkan untuk menggunakan Deskripsi Singkat.
+   */
+  formDescription?: string | null;
+  enablePhoto?: boolean | null;
+  enableCatatan?: boolean | null;
+  /**
+   * Tambahkan input custom (seperti Asal Instansi, dsb).
+   */
+  customFields?:
+    | {
+        name: string;
+        type: 'text' | 'textarea' | 'checkbox';
+        required?: boolean | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "absensi".
+ */
+export interface Absensi {
+  id: number;
+  acara: number | Acara;
+  nama: string;
+  status: 'hadir' | 'terlambat' | 'tidak_hadir';
+  catatan?: string | null;
+  foto?: (number | null) | Media;
+  /**
+   * Menyimpan jawaban dari kolom tambahan form absensi.
+   */
+  customData?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1022,6 +1100,14 @@ export interface PayloadLockedDocument {
         value: number | User;
       } | null)
     | ({
+        relationTo: 'acara';
+        value: number | Acara;
+      } | null)
+    | ({
+        relationTo: 'absensi';
+        value: number | Absensi;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: number | Redirect;
       } | null)
@@ -1089,28 +1175,6 @@ export interface PayloadMigration {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
-  hero?:
-    | T
-    | {
-        type?: T;
-        richText?: T;
-        links?:
-          | T
-          | {
-              link?:
-                | T
-                | {
-                    type?: T;
-                    newTab?: T;
-                    reference?: T;
-                    url?: T;
-                    label?: T;
-                    appearance?: T;
-                  };
-              id?: T;
-            };
-        media?: T;
-      };
   layout?:
     | T
     | {
@@ -1120,6 +1184,8 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
       };
+  bannerDescription?: T;
+  featuredImage?: T;
   meta?:
     | T
     | {
@@ -1224,10 +1290,11 @@ export interface FormBlockSelect<T extends boolean = true> {
  */
 export interface PostsSelect<T extends boolean = true> {
   title?: T;
-  heroImage?: T;
-  content?: T;
-  relatedPosts?: T;
+  excerpt?: T;
   categories?: T;
+  content?: T;
+  heroImage?: T;
+  relatedPosts?: T;
   meta?:
     | T
     | {
@@ -1349,6 +1416,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface CategoriesSelect<T extends boolean = true> {
   title?: T;
+  image?: T;
   generateSlug?: T;
   slug?: T;
   parent?: T;
@@ -1369,6 +1437,7 @@ export interface CategoriesSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  profilePicture?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1385,6 +1454,45 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "acara_select".
+ */
+export interface AcaraSelect<T extends boolean = true> {
+  title?: T;
+  tanggal?: T;
+  kategori?: T;
+  status?: T;
+  deskripsi?: T;
+  formTitle?: T;
+  formDescription?: T;
+  enablePhoto?: T;
+  enableCatatan?: T;
+  customFields?:
+    | T
+    | {
+        name?: T;
+        type?: T;
+        required?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "absensi_select".
+ */
+export interface AbsensiSelect<T extends boolean = true> {
+  acara?: T;
+  nama?: T;
+  status?: T;
+  catatan?: T;
+  foto?: T;
+  customData?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1810,6 +1918,10 @@ export interface HomePage {
    */
   heroImage?: (number | null) | Media;
   /**
+   * Gambar latar belakang (background) transparan untuk banner utama beranda. Jika kosong, akan memakai warna biru solid.
+   */
+  heroBackgroundImage?: (number | null) | Media;
+  /**
    * Judul besar utama di halaman home.
    */
   heroTitle: string;
@@ -1945,6 +2057,10 @@ export interface NewsPage {
    */
   heroImage?: (number | null) | Media;
   /**
+   * Gambar background transparan untuk banner halaman berita. Jika kosong, banner memakai warna biru solid.
+   */
+  bannerBackgroundImage?: (number | null) | Media;
+  /**
    * Judul hero di halaman berita.
    */
   heroTitle: string;
@@ -1987,6 +2103,10 @@ export interface OrganizationStructure {
    * Gambar hero halaman struktur. Opsional, untuk memperjelas identitas halaman.
    */
   heroImage?: (number | null) | Media;
+  /**
+   * Gambar background transparan untuk banner halaman struktur. Jika kosong, banner memakai warna biru solid.
+   */
+  bannerBackgroundImage?: (number | null) | Media;
   /**
    * Judul hero halaman struktur.
    */
@@ -2056,6 +2176,10 @@ export interface GalleryPage {
    */
   heroImage?: (number | null) | Media;
   /**
+   * Gambar background transparan untuk banner halaman galeri. Jika kosong, banner memakai warna biru solid.
+   */
+  bannerBackgroundImage?: (number | null) | Media;
+  /**
    * Judul hero halaman galeri.
    */
   heroTitle: string;
@@ -2111,6 +2235,10 @@ export interface RegistrationPage {
    * Gambar hero halaman pendaftaran. Opsional untuk visual tambahan jika dibutuhkan.
    */
   heroImage?: (number | null) | Media;
+  /**
+   * Gambar background transparan untuk banner halaman pendaftaran. Jika kosong, banner memakai warna biru solid.
+   */
+  bannerBackgroundImage?: (number | null) | Media;
   /**
    * Judul hero halaman pendaftaran.
    */
@@ -2303,6 +2431,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
 export interface HomePageSelect<T extends boolean = true> {
   heroBadgeText?: T;
   heroImage?: T;
+  heroBackgroundImage?: T;
   heroTitle?: T;
   heroDescription?: T;
   heroCTA?:
@@ -2381,6 +2510,7 @@ export interface HomePageSelect<T extends boolean = true> {
  */
 export interface NewsPageSelect<T extends boolean = true> {
   heroImage?: T;
+  bannerBackgroundImage?: T;
   heroTitle?: T;
   heroDescription?: T;
   listing?:
@@ -2411,6 +2541,7 @@ export interface NewsPageSelect<T extends boolean = true> {
  */
 export interface OrganizationStructureSelect<T extends boolean = true> {
   heroImage?: T;
+  bannerBackgroundImage?: T;
   heroTitle?: T;
   heroDescription?: T;
   leader?:
@@ -2455,6 +2586,7 @@ export interface OrganizationStructureSelect<T extends boolean = true> {
  */
 export interface GalleryPageSelect<T extends boolean = true> {
   heroImage?: T;
+  bannerBackgroundImage?: T;
   heroTitle?: T;
   heroDescription?: T;
   tabs?:
@@ -2485,6 +2617,7 @@ export interface GalleryPageSelect<T extends boolean = true> {
 export interface RegistrationPageSelect<T extends boolean = true> {
   heroBadgeText?: T;
   heroImage?: T;
+  bannerBackgroundImage?: T;
   heroTitle?: T;
   heroDescription?: T;
   formTitle?: T;

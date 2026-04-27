@@ -1,10 +1,9 @@
 import type { CollectionAfterChangeHook, CollectionAfterDeleteHook } from 'payload'
 
-import { revalidatePath, revalidateTag } from 'next/cache'
-
 import type { Post } from '../../../payload-types'
+import { revalidatePathSafe, revalidateTagSafe } from '../../../utilities/revalidate'
 
-export const revalidatePost: CollectionAfterChangeHook<Post> = ({
+export const revalidatePost: CollectionAfterChangeHook<Post> = async ({
   doc,
   previousDoc,
   req: { payload, context },
@@ -15,11 +14,11 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = ({
 
       payload.logger.info(`Revalidating post at path: ${detailPath}`)
 
-      revalidatePath(detailPath)
-      revalidatePath('/berita')
-      revalidatePath(`/posts/${doc.slug}`)
-      revalidatePath('/posts')
-      revalidateTag('posts-sitemap', 'max')
+      await revalidatePathSafe(detailPath)
+      await revalidatePathSafe('/berita')
+      await revalidatePathSafe(`/posts/${doc.slug}`)
+      await revalidatePathSafe('/posts')
+      await revalidateTagSafe('posts-sitemap', 'max')
     }
 
     // If the post was previously published, we need to revalidate the old path
@@ -28,25 +27,28 @@ export const revalidatePost: CollectionAfterChangeHook<Post> = ({
 
       payload.logger.info(`Revalidating old post at path: ${oldPath}`)
 
-      revalidatePath(oldPath)
-      revalidatePath('/berita')
-      revalidatePath(`/posts/${previousDoc.slug}`)
-      revalidatePath('/posts')
-      revalidateTag('posts-sitemap', 'max')
+      await revalidatePathSafe(oldPath)
+      await revalidatePathSafe('/berita')
+      await revalidatePathSafe(`/posts/${previousDoc.slug}`)
+      await revalidatePathSafe('/posts')
+      await revalidateTagSafe('posts-sitemap', 'max')
     }
   }
   return doc
 }
 
-export const revalidateDelete: CollectionAfterDeleteHook<Post> = ({ doc, req: { context } }) => {
+export const revalidateDelete: CollectionAfterDeleteHook<Post> = async ({
+  doc,
+  req: { context },
+}) => {
   if (!context.disableRevalidate) {
     const path = `/berita/${doc?.slug}`
 
-    revalidatePath(path)
-    revalidatePath('/berita')
-    revalidatePath(`/posts/${doc?.slug}`)
-    revalidatePath('/posts')
-    revalidateTag('posts-sitemap', 'max')
+    await revalidatePathSafe(path)
+    await revalidatePathSafe('/berita')
+    await revalidatePathSafe(`/posts/${doc?.slug}`)
+    await revalidatePathSafe('/posts')
+    await revalidateTagSafe('posts-sitemap', 'max')
   }
 
   return doc

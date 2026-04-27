@@ -49,11 +49,11 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header, siteSettings
       <div className="container flex h-20 items-center justify-between gap-6">
         <Link href="/">
           <Logo
-            ariaLabel={siteSettings.siteName || 'Site'}
+            ariaLabel={siteSettings.siteName || 'Ikma SII'}
             markText={siteSettings.logoMark || 'IK'}
             media={siteSettings.logoImage && 'url' in siteSettings.logoImage ? (siteSettings.logoImage as any) : null}
             subtitle={siteSettings.logoSubtitle || ''}
-            title={siteSettings.logoTitle || siteSettings.siteName || 'Site'}
+            title={siteSettings.logoTitle || siteSettings.siteName || 'Ikma SII'}
           />
         </Link>
         <HeaderNav cta={header.cta} navItems={header.navItems} pathname={pathname} />

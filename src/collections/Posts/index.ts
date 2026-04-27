@@ -72,21 +72,42 @@ export const Posts: CollectionConfig<'posts'> = {
       name: 'title',
       type: 'text',
       required: true,
+      admin: {
+        description: 'Judul berita atau artikel. Akan tampil di banner halaman detail dan listing berita.',
+      },
     },
     {
       type: 'tabs',
       tabs: [
+        // --- TAB 1: INFORMASI DASAR ---
         {
+          label: 'Info Dasar',
+          description: 'Ringkasan artikel dan kategori. Lengkapi tab ini terlebih dahulu.',
           fields: [
             {
-              name: 'heroImage',
-              type: 'upload',
-              relationTo: 'media',
+              name: 'excerpt',
+              type: 'textarea',
               admin: {
                 description:
-                  'Gambar utama artikel. Dipakai pada kartu berita dan hero detail berita.',
+                  'Ringkasan singkat artikel (1–3 kalimat). Ditampilkan di halaman listing berita dan kartu artikel. Jika dikosongkan, sistem akan memakai deskripsi SEO.',
               },
             },
+            {
+              name: 'categories',
+              type: 'relationship',
+              hasMany: true,
+              relationTo: 'categories',
+              admin: {
+                description: 'Pilih satu atau lebih kategori untuk artikel ini. Kategori muncul sebagai label/tag di daftar dan detail berita.',
+              },
+            },
+          ],
+        },
+        // --- TAB 2: ISI ARTIKEL ---
+        {
+          label: 'Isi Artikel',
+          description: 'Tulis konten lengkap artikel di sini menggunakan editor teks kaya.',
+          fields: [
             {
               name: 'content',
               type: 'richText',
@@ -105,20 +126,36 @@ export const Posts: CollectionConfig<'posts'> = {
               label: false,
               required: true,
               admin: {
-                description: 'Isi lengkap artikel berita.',
+                description:
+                  'Tulis isi lengkap artikel berita di sini. Gunakan toolbar di atas untuk heading, bold, italic, dan menyisipkan gambar atau blok khusus.',
               },
             },
           ],
-          label: 'Content',
         },
+        // --- TAB 3: MEDIA & GAMBAR ---
         {
+          label: 'Media & Gambar',
+          description: 'Gambar sampul artikel. Wajib diisi agar tampilan berita lebih menarik.',
+          fields: [
+            {
+              name: 'heroImage',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                description:
+                  'Gambar sampul utama artikel. Ditampilkan sebagai background besar di halaman detail berita dan thumbnail di listing berita. Disarankan rasio 16:9 (mis. 1280×720px).',
+              },
+            },
+          ],
+        },
+        // --- TAB 4: RELASI ---
+        {
+          label: 'Artikel Terkait',
+          description: 'Pilih artikel lain yang relevan untuk ditampilkan di bagian bawah artikel ini.',
           fields: [
             {
               name: 'relatedPosts',
               type: 'relationship',
-              admin: {
-                position: 'sidebar',
-              },
               filterOptions: ({ id }) => {
                 return {
                   id: {
@@ -128,19 +165,14 @@ export const Posts: CollectionConfig<'posts'> = {
               },
               hasMany: true,
               relationTo: 'posts',
-            },
-            {
-              name: 'categories',
-              type: 'relationship',
               admin: {
-                position: 'sidebar',
+                description:
+                  'Pilih artikel lain yang berkaitan dengan artikel ini. Akan ditampilkan di bagian bawah halaman detail sebagai rekomendasi bagi pembaca.',
               },
-              hasMany: true,
-              relationTo: 'categories',
             },
           ],
-          label: 'Meta',
         },
+        // --- TAB 5: SEO ---
         {
           name: 'meta',
           label: 'SEO',
@@ -156,13 +188,9 @@ export const Posts: CollectionConfig<'posts'> = {
             MetaImageField({
               relationTo: 'media',
             }),
-
             MetaDescriptionField({}),
             PreviewField({
-              // if the `generateUrl` function is configured
               hasGenerateFn: true,
-
-              // field paths to match the target field for data
               titlePath: 'meta.title',
               descriptionPath: 'meta.description',
             }),
@@ -178,6 +206,7 @@ export const Posts: CollectionConfig<'posts'> = {
           pickerAppearance: 'dayAndTime',
         },
         position: 'sidebar',
+        description: 'Tanggal dan waktu publikasi artikel.',
       },
       hooks: {
         beforeChange: [
@@ -195,6 +224,7 @@ export const Posts: CollectionConfig<'posts'> = {
       type: 'relationship',
       admin: {
         position: 'sidebar',
+        description: 'Pilih penulis artikel ini.',
       },
       hasMany: true,
       relationTo: 'users',

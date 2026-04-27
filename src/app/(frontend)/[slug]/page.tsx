@@ -8,10 +8,10 @@ import React, { cache } from 'react'
 import { homeStatic } from '@/endpoints/seed/home-static'
 
 import { RenderBlocks } from '@/blocks/RenderBlocks'
-import { RenderHero } from '@/heros/RenderHero'
+import { PageHero } from '@/components/maritime/site'
 import { generateMeta } from '@/utilities/generateMeta'
 import PageClient from './page.client'
-import { LivePreviewListener } from '@/components/LivePreviewListener'
+import PagePreview from './page.preview'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -72,10 +72,18 @@ export default async function Page({ params: paramsPromise }: Args) {
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
-      {draft && <LivePreviewListener />}
-
-      <RenderHero {...hero} />
-      <RenderBlocks blocks={layout} />
+      {draft ? (
+        <PagePreview initialPage={page} />
+      ) : (
+        <>
+          <PageHero 
+            title={page.title} 
+            description={page.bannerDescription || page.meta?.description || ''} 
+            image={page.featuredImage} 
+          />
+          <RenderBlocks blocks={layout} />
+        </>
+      )}
     </article>
   )
 }

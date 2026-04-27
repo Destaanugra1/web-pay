@@ -12,6 +12,7 @@ export const Users: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    description: 'Manajemen akun pengguna dan profil admin.',
     defaultColumns: ['name', 'email'],
     useAsTitle: 'name',
   },
@@ -20,6 +21,18 @@ export const Users: CollectionConfig = {
     {
       name: 'name',
       type: 'text',
+      admin: {
+        description: 'Masukkan nama lengkap pengguna.',
+      },
+    },
+    {
+      name: 'profilePicture',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        condition: (_data, _siblingData, { user }) => Boolean(user),
+        description: 'Unggah foto profil pengguna di sini.',
+      },
     },
   ],
   timestamps: true,

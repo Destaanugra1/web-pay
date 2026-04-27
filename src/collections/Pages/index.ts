@@ -7,7 +7,6 @@ import { CallToAction } from '../../blocks/CallToAction/config'
 import { Content } from '../../blocks/Content/config'
 import { FormBlock } from '../../blocks/Form/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
-import { hero } from '@/heros/config'
 import { slugField } from 'payload'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
@@ -37,6 +36,7 @@ export const Pages: CollectionConfig<'pages'> = {
     slug: true,
   },
   admin: {
+    description: 'Halaman statis utama untuk membangun struktur website Anda.',
     defaultColumns: ['title', 'slug', 'updatedAt'],
     livePreview: {
       url: ({ data, req }) =>
@@ -59,14 +59,14 @@ export const Pages: CollectionConfig<'pages'> = {
       name: 'title',
       type: 'text',
       required: true,
+      admin: {
+        description: 'Masukkan judul utama halaman.',
+      },
     },
     {
       type: 'tabs',
       tabs: [
-        {
-          fields: [hero],
-          label: 'Hero',
-        },
+
         {
           fields: [
             {
@@ -76,10 +76,33 @@ export const Pages: CollectionConfig<'pages'> = {
               required: true,
               admin: {
                 initCollapsed: true,
+                description: 'Tambahkan blok-blok untuk menyusun isi halaman.',
               },
             },
           ],
           label: 'Content',
+          description: 'Isi utama halaman.',
+        },
+        {
+          label: 'Banner & Media',
+          description: 'Pengaturan banner atas dan media terkait halaman ini.',
+          fields: [
+            {
+              name: 'bannerDescription',
+              type: 'textarea',
+              admin: {
+                description: 'Teks deskripsi pendek yang muncul di bawah judul pada banner atas halaman.',
+              },
+            },
+            {
+              name: 'featuredImage',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                description: 'Unggah gambar untuk dijadikan background transparan pada banner atas halaman.',
+              },
+            },
+          ],
         },
         {
           name: 'meta',

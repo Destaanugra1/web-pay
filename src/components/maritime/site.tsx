@@ -5,6 +5,9 @@ import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
+import type { Media as MediaType } from '@/payload-types'
+import { Media } from '@/components/Media'
+
 export const maritimeLinks = [
   { href: '/berita', label: 'Baca Berita' },
   { href: '/struktur', label: 'Struktur' },
@@ -34,16 +37,26 @@ export const SectionHeading: React.FC<{
 export const PageHero: React.FC<{
   badge?: React.ReactNode
   title: string
-  description: string
+  description?: string
   cta?: { href: string; label: string }
-}> = ({ badge, title, description, cta }) => {
+  image?: MediaType | string | number | null
+  size?: 'home' | 'inner'
+}> = ({ badge, title, description, cta, image, size = 'inner' }) => {
+  const paddingClass = size === 'home' ? 'py-24 md:py-32' : 'py-14 md:py-20'
+  const headingClass = size === 'home' ? 'text-5xl md:text-6xl' : 'text-4xl md:text-5xl'
+
   return (
-    <section className="relative overflow-hidden bg-[linear-gradient(135deg,#002957_0%,#003f7f_100%)] px-6 py-24 text-center text-white md:px-8 md:py-32">
+    <section className={`relative overflow-hidden bg-[linear-gradient(135deg,#002957_0%,#003f7f_100%)] px-6 text-center text-white md:px-8 ${paddingClass}`}>
+      {image && typeof image === 'object' && 'url' in image && image.url && (
+        <div className="absolute inset-0 overflow-hidden">
+          <Media resource={image} fill imgClassName="object-cover opacity-25" />
+        </div>
+      )}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,224,136,0.15),transparent_35%),radial-gradient(circle_at_bottom_left,rgba(214,227,255,0.16),transparent_30%)]" />
       <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-6">
         {badge}
-        <h1 className="font-serif text-5xl font-semibold tracking-tight md:text-6xl">{title}</h1>
-        <p className="max-w-2xl text-lg leading-8 text-[#d6e3ff]">{description}</p>
+        <h1 className={`font-serif font-semibold tracking-tight ${headingClass}`}>{title}</h1>
+        {description && <p className="max-w-2xl text-lg leading-8 text-[#d6e3ff]">{description}</p>}
         {cta && (
           <Button
             asChild

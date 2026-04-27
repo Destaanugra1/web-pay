@@ -9,6 +9,8 @@ import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
 import { Users } from './collections/Users'
+import { Acara } from './collections/Acara'
+import { Absensi } from './collections/Absensi'
 import { Footer } from './Footer/config'
 import { GalleryPage } from './globals/GalleryPage'
 import { Header } from './Header/config'
@@ -34,6 +36,8 @@ export default buildConfig({
       // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
       // Feel free to delete this at any time. Simply remove the line below.
       beforeDashboard: ['@/components/BeforeDashboard'],
+      // Custom admin navigation sidebar
+      Nav: '@/components/AdminNav#CustomNav',
     },
     importMap: {
       baseDir: path.resolve(dirname),
@@ -69,7 +73,7 @@ export default buildConfig({
       url: process.env.DATABASE_URL || '',
     },
   }),
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [Pages, Posts, Media, Categories, Users, Acara, Absensi],
   cors: [getServerSideURL()].filter(Boolean),
   globals: [
     Header,

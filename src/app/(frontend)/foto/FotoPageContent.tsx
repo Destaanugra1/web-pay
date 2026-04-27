@@ -15,6 +15,7 @@ export function FotoPageContent({ galleryPage }: { galleryPage: any }) {
   return (
     <>
       <PageHero
+        image={galleryPage.bannerBackgroundImage}
         badge={
           typeof galleryPage.heroImage === 'object' && galleryPage.heroImage?.url ? (
             <div className="size-24 overflow-hidden rounded-full border-4 border-[#fed65b] bg-white shadow-xl">

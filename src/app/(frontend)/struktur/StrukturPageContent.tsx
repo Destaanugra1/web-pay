@@ -15,6 +15,7 @@ export function StrukturPageContent({ structure }: { structure: any }) {
   return (
     <>
       <PageHero
+        image={structure.bannerBackgroundImage}
         badge={
           typeof structure.heroImage === 'object' && structure.heroImage?.url ? (
             <div className="size-24 overflow-hidden rounded-full border-4 border-[#fed65b] bg-white shadow-xl">

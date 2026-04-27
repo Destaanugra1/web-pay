@@ -46,6 +46,15 @@ export const OrganizationStructure: GlobalConfig = {
       },
     },
     {
+      name: 'bannerBackgroundImage',
+      type: 'upload',
+      relationTo: 'media',
+      admin: {
+        description:
+          'Gambar background transparan untuk banner halaman struktur. Jika kosong, banner memakai warna biru solid.',
+      },
+    },
+    {
       admin: {
         description: 'Judul hero halaman struktur.',
       },

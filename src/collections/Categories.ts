@@ -13,13 +13,42 @@ export const Categories: CollectionConfig = {
     update: authenticated,
   },
   admin: {
+    description: 'Kategori untuk mengelompokkan artikel/postingan.',
     useAsTitle: 'title',
   },
   fields: [
     {
-      name: 'title',
-      type: 'text',
-      required: true,
+      type: 'tabs',
+      tabs: [
+        {
+          label: 'Informasi',
+          description: 'Data utama kategori.',
+          fields: [
+            {
+              name: 'title',
+              type: 'text',
+              required: true,
+              admin: {
+                description: 'Masukkan nama kategori baru.',
+              },
+            },
+          ],
+        },
+        {
+          label: 'Media & Gambar',
+          description: 'Gambar ilustrasi untuk kategori.',
+          fields: [
+            {
+              name: 'image',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                description: 'Unggah gambar ikon atau cover kategori di sini.',
+              },
+            },
+          ],
+        },
+      ],
     },
     slugField({
       position: undefined,
